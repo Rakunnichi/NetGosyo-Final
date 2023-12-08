@@ -437,29 +437,29 @@ if ($res = mysqli_fetch_array($findresult)) {
                                         <input type="hidden" name="user_id" value="<?php echo $fetch_user['id']; ?>">
 
                                         <div class="mt-3 col-md-6"><label class="labels" style="font-size: 17px;">Full
-                                                Name <span style="color: rgb(250, 1, 46); font-size: 14px;">*Required</span></label>
+                                                Name <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
                                             <input type="text" name="fullname" placeholder="Enter your fullname"
                                                 class="form-control" value="<?php echo $fullname; ?>">
                                         </div>
 
                                         <div class="mt-3 col-md-6"><label class="labels"
-                                                style="font-size: 17px;">Username <span style="color: rgb(250, 1, 46); font-size: 14px;">*Required</span></label>
+                                                style="font-size: 17px;">Username <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
                                             <input type="text" name="username" placeholder="Enter your username"
                                                 class="form-control" value="<?php echo $username; ?>">
                                         </div>
 
                                         <div class="mt-2 col-md-6"><label class="labels" style="font-size: 17px;">Email
-                                                Address <span style="color: rgb(250, 1, 46); font-size: 14px;">*Required</span></label>
+                                                Address <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
                                             <input type="text" name="emails" placeholder="Enter your email address"
                                                 class="form-control" value="<?php echo $email; ?>">
                                         </div>
 
-                                        <div class="mt-2 col-md-6"><label class="labels" style="font-size: 17px;">Mobile Number <span style="color: rgb(250, 1, 46); font-size: 14px;">*Required</span> <?php echo $numberVerified == 0 ? '<small><a style="color:red" href="verify-number.php?phone_number='.$phonenumber.'">(CLICK TO VERIFY)</a></small>' : ''; ?></label>
+                                        <div class="mt-2 col-md-6"><label class="labels" style="font-size: 17px;">Mobile Number <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span> <?php echo $numberVerified == 0 ? '<small><a style="color:red" href="verify-number.php?phone_number='.$phonenumber.'">(CLICK TO VERIFY)</a></small>' : ''; ?></label>
                                             <input type="text" name="number" placeholder="Enter your mobile number" class="form-control" value="<?php echo $phonenumber; ?>" style="<?php echo $numberVerified == 0 ? 'border:1px solid red' : ''; ?>">
                                         </div>
 
                                         <div class="mt-2 col-md-6"><label class="labels"
-                                                style="font-size: 17px;">Default Address <span style="color: rgb(250, 1, 46); font-size: 14px;">*Required</span></label>
+                                                style="font-size: 17px;">Default Address <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
                                             <input type="text" name="address" placeholder="Enter your address"
                                                 class="form-control" value="<?php echo $address; ?>">
                                         </div>
@@ -469,6 +469,19 @@ if ($res = mysqli_fetch_array($findresult)) {
                                             <input type="text" name="address2" placeholder="Enter your address"
                                                 class="form-control" value="<?php echo $address2;?>">
                                         </div>
+
+                                        <div class="mt-2 col-md-6"><label class="labels"
+                                                style="font-size: 17px;">Archipelago <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
+                                                <select name="archipelago" class="form-control" >
+                                                <option selected>Choose Archipelago</option>
+                                                <option value="1">Luzon</option>
+                                                <option value="2">Visayas</option>
+                                                <option value="3">Mindanao</option>
+                                                <option value="3">NCR</option>
+                                                <option value="3">ISLAND</option>
+                                                </select>
+                                        </div>
+
 
                                         <div class="mt-2 col-md-6"><label class="labels"
                                                 style="font-size: 17px;">Specific Location (Landmark)</label>

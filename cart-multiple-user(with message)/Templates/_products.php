@@ -91,7 +91,7 @@ while ($row = $result->fetch_assoc()) :
                            
                             <button type="submit" name="add_to_cart" class="btn color-orange-bg form-control">Add
                                 to Cart</button>
-                       
+               
                     </div>
                 </div>
             </div>
@@ -174,7 +174,7 @@ while ($row = $result->fetch_assoc()) :
                         </div>
                     </div>
                     <!-- !size -->
-                    </form>
+                    
 
                 <?php } else if($row['item_brand'] == 'Women-Apparel') { ?>
 
@@ -194,7 +194,8 @@ while ($row = $result->fetch_assoc()) :
                 <?php } ?>
                  
 
-
+            
+            </form>
                         
             </div>
             <div class="col-12 pt-4">
@@ -309,7 +310,7 @@ endwhile;
                             echo "<br>";
                             echo "<h3>Leave a Review:</h3>";
                             echo "<label for='rating'><b>Rating:</b></label>";
-                            echo "<select class='form-control' name='rating' style='width:auto;' required>";
+                            echo "<select class='form-control' name='rating' style='width:auto;'>";
                             echo "<option value='1'>1</option>";
                             echo "<option value='2'>2</option>";
                             echo "<option value='3'>3</option>";
@@ -321,7 +322,7 @@ endwhile;
                             
                             echo "<div class='form-group'>";
                             echo "<label for='comment'><b>Comment:</b></label>";
-                            echo "<textarea class='form-control' name='comment' required></textarea>";
+                            echo "<textarea class='form-control' name='comment' ></textarea>";
                             echo "</div>";
                             
                         

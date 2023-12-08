@@ -60,11 +60,13 @@ if (mysqli_num_rows($user) > 0) {
                 
                 <small>Seller: <b><?php echo $shopname; ?></b></small>
                 
-                <?php if($fetch_cart['size'] != NULL){ ?>
+                <?php if($fetch_cart['size'] == "none"){ ?>
+                  
+
+                <?php } else{ ?>
                   <br>
                   <small>Size: <b><?php echo $fetch_cart['size']; ?></b></small>
-
-               <?php } ?>
+                <?php  } ?>
 
                 <!-- Product Qty -->
                 <div class="qty d-flex pt-2">

@@ -382,19 +382,12 @@ else {
           <div class="form-group">
             <h6>Payment Method</h6>
             <select name="pmode" class="custom-select" id="payment-method">
-            <?php
-              $select_method = mysqli_query($conn, "SELECT * FROM `pmethod` ") or die('query failed!');
-              if (mysqli_num_rows($select_method) > 0) {
-              while ($fetch_method = mysqli_fetch_assoc($select_method)) {
-            ?>
-            <option value="<?php echo $fetch_method['name']; ?>" selected>
-            <?php echo $fetch_method['name']; ?>
+           
+            <option value="Cash on Delivery" selected>
+            Cash on Delivery
             </option>
              
-            <?php
-              }
-              }; 
-            ?>
+            
             </select>
           </div>
             

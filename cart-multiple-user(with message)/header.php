@@ -47,7 +47,7 @@ if (isset($_POST['add_to_cart'])) {
   $product_price = $_POST['product_price'];
   $product_image = $_POST['product_image'];
   $product_quantity = $_POST['product_quantity'];
-  $product_size = $_POST['product_size'];
+  $product_size = $_POST['product_size'] ?? 'none';
 
   $select_cart = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name' 
     AND user_id = '$user_id'") or die('query failed');
