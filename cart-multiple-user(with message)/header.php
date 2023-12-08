@@ -48,6 +48,8 @@ if (isset($_POST['add_to_cart'])) {
   $product_image = $_POST['product_image'];
   $product_quantity = $_POST['product_quantity'];
   $product_size = $_POST['product_size'] ?? 'none';
+  $product_weight = $_POST['product_weight'];
+
 
   $select_cart = mysqli_query($conn, "SELECT * FROM `cart` WHERE name = '$product_name' 
     AND user_id = '$user_id'") or die('query failed');
@@ -55,8 +57,8 @@ if (isset($_POST['add_to_cart'])) {
   if (mysqli_num_rows($select_cart) > 0) {
     $in_cart[] = 'Product Already in Cart!';
   } else {
-    mysqli_query($conn, "INSERT INTO `cart` (user_id, product_id, seller_id, name, price, image, quantity, size) VALUES
-        ('$user_id', '$product_id', '$seller_id', '$product_name', '$product_price', '$product_image', '$product_quantity', '$product_size')") or die('query failed');
+    mysqli_query($conn, "INSERT INTO `cart` (user_id, product_id, seller_id, name, price, image, quantity, size, weight) VALUES
+        ('$user_id', '$product_id', '$seller_id', '$product_name', '$product_price', '$product_image', '$product_quantity', '$product_size', '$product_weight')") or die('query failed');
     $message[] = 'Product Added to Cart!';
   }
 }

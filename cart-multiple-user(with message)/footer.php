@@ -146,7 +146,7 @@ $(document).ready(function(){
 
         swal({
           title: "Confirm?",
-          text: "Are you sure you want to delete?",
+          text: "Are you sure you want to remove?",
           icon: "warning",
           buttons: true,
           dangerMode: true,

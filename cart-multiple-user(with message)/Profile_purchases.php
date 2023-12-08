@@ -627,6 +627,7 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                                                         <th>Item Name</th>
                                                         <th>Price</th>
                                                         <th>Qty</th>
+                                                        <th>Size</th>
                                                         <th>Total</th>
                                                     </tr>
                                                 </thead>
@@ -659,7 +660,8 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js">
     </script>
     <script type="text/javascript"></script>
-    <script>
+
+   <script>
     $(document).ready(function() {
         $.noConflict();
         $('#myTable').dataTable();
@@ -672,6 +674,8 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
         let total = 0;
         $('#tbody').html('');
         $('#modalTitle').text(items[0]['order_number']);
+
+       
         items.map(row => {
             total += row.qty * row.price 
             const html = `
@@ -680,6 +684,7 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
 					<td>${row.name}</td>
 					<td>₱${row.price}</td>
 					<td>${row.qty}</td>
+                    <td>${row.size}</td>
 					<td>₱${row.qty * row.price}</td>
                    
 				</tr>
@@ -689,14 +694,28 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
         const total_row = `
 				<tr>
                    
-					<td>Total + Shipping Fee <b>(₱45)</b></td>
+					<td>Total</td>
 					<td></td>					
 					<td></td>
+                    <td></td>
 					<td>₱${total + 45}</td>
-                   
+
 				</tr>
 			`;
 
+            const shipping_row = `
+				<tr>
+                   
+					<td>Shipping Fee</td>
+					<td></td>					
+					<td></td>
+                    <td></td>
+					<td>₱ 45</td>
+
+				</tr>
+			`;
+
+        $('#tbody').append(shipping_row);
         $('#tbody').append(total_row);
         $('#orderModal').modal('show');
     });
@@ -704,7 +723,8 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
     $('[data-dismiss="modal"]').click(function() {
         $('#orderModal').modal('hide');
     });
-    </script>
+    </script> 
+
 </body>
 
 </html>

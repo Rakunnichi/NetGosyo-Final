@@ -8,7 +8,8 @@
     $prodprice = mysqli_real_escape_string($conn, $_POST['prodprice']);
     $prodquantity = mysqli_real_escape_string($conn, $_POST['prodquantity']);
     $prod_desc = mysqli_real_escape_string($conn, $_POST['prod_desc']);
-    $prodcategory = mysqli_real_escape_string($conn, $_POST['category']);
+    $prodcategory = mysqli_real_escape_string($conn, $_POST['category']); 
+    $prodweight = mysqli_real_escape_string($conn, $_POST['prodweight']);
    
     $file_name = $_FILES['image']['name'];
     $file_tmp = $_FILES['image']['tmp_name'];
@@ -27,7 +28,7 @@
     $destination = "../Seller-uploads/".$new_file_name;
     move_uploaded_file($file_tmp, $destination);
     
-    mysqli_query($conn, "INSERT INTO `products` (user_id, name, price, image, item_brand, quantity, description) VALUES('$user_id', '$prodname', '$prodprice', '$new_file_name', '$prodcategory', '$prodquantity' , '$prod_desc')") or die ('query failed');
+    mysqli_query($conn, "INSERT INTO `products` (user_id, name, price, image, item_brand, quantity, description, weight) VALUES('$user_id', '$prodname', '$prodprice', '$new_file_name', '$prodcategory', '$prodquantity' , '$prod_desc', '$prodweight')") or die ('query failed');
        
     
     $addprodmessage[] = "Product Added Successfully";
@@ -180,7 +181,7 @@
                                     <div class="col-md-6">
                                         <div class="input-group input-group-outline my-3">
                                         <div class="input-group">
-                                                <label>Product Name:</label>
+                                                <label><b>Product Name:</b></label>
                                             </div>
                                             <input type="text" name="prodname" placeholder="Product Name"
                                                 class="form-control" required>
@@ -189,7 +190,7 @@
                                     <div class="col-md-6">
                                         <div class="input-group input-group-outline my-3">
                                         <div class="input-group">
-                                                <label>Product Price:</label>
+                                                <label><b>Product Price:</b></label>
                                             </div>
                                             <input type="number" name="prodprice" placeholder="Product Price"
                                                 class="form-control" required>
@@ -202,16 +203,38 @@
                                     <div class="col-md-6">
                                         <div class="input-group input-group-outline my-3">
                                         <div class="input-group">
-                                                <label>Product Quantity:</label>
+                                                <label><b>Product Quantity:</b></label>
                                             </div>
                                             <input type="number" name="prodquantity" placeholder="Product Quantity"
                                                 class="form-control" required>
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="input-group input-group-outline my-3">
                                             <div class="input-group">
-                                            <label>Choose A Category:</label>
+                                            <label><b>Product Weight:</b></label>
+                                            </div>
+                                            <select class="form-control" name="prodweight" id="prodweight">                
+                                                <option value="0g-500g">0g - 500g</option>
+                                                <option value="501g-1kg">501g - 1kg</option>
+                                                <option value="1.01kg-3kg">1.01kg - 3kg</option>
+                                                <option value="3.01kg-4kg">3.01kg - 4kg</option>
+                                                <option value="4.01-5kgs">4.01 - 5kg</option>
+                                                <option value="5.0kg-6kg">5.0kg - 6kg</option>
+                                                <option value="6.01kg-7kg">6.01kg - 7kg</option>
+                                                <option value="7.0kg-8kg">7.0kg - 8kg</option>
+                                                <option value="8.01kg-9kg">8.01kg - 9kg</option>
+                                                <option value="9.01kg-10kg">9.01kg - 10kg</option>
+                                                   
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-outline my-3">
+                                            <div class="input-group">
+                                            <label><b>Choose A Category:</b></label>
                                             </div>
                                             <select class="form-control" name="category" id="category">                
                                                 <option value="Gadget">Gadget</option>
@@ -236,17 +259,10 @@
                                         </div>
                                     </div>
 
-                                    <!-- <div class="col-md-6">
-                                        <div class="input-group input-group-outline my-2">
-                                        <label>Product Image &#8595;</label>
-                                        <input class="form-control" type="file" accept=".jpg, .jpeg, .png" name="file" style="width:100%;" required>
-                                        </div>
-                                    </div> -->
-
                                     <div class="col-md-3">
                                         <div class="input-group input-group-outline my-2">
                                             <div class="input-group">
-                                                <label>Add Image &#8595;</label>
+                                                <label><b>Add Image &#8595;</b></label>
                                             </div>
                                             <div class="image_area">
                                                 <label class="custum-file-upload" for="upload_image">
@@ -276,7 +292,7 @@
                                     <div class="col-md-9">
                                         <div class="input-group input-group-outline my-2">
                                             <div class="input-group">
-                                                <label>Description:</label>
+                                                <label><b>Description:</b></label>
                                             </div>
                                             <div class="input-group input-group-dynamic">
                                                 <textarea class="form-control" rows="7" name="prod_desc"

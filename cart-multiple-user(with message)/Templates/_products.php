@@ -87,6 +87,7 @@ while ($row = $result->fetch_assoc()) :
                             <input type="hidden" name="product_name" value="<?= $row['name'] ?>">
                             <input type="hidden" name="product_price" value="<?= $row['price'] ?>">
                             <input type="hidden" name="product_image" value="<?= $row['image'] ?>">
+                            <input type="hidden" name="product_weight" value="<?= $row['weight'] ?>">
                             <input type="hidden" name="product_quantity" value="1">
                            
                             <button type="submit" name="add_to_cart" class="btn color-orange-bg form-control">Add

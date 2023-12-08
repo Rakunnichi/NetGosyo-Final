@@ -5,6 +5,9 @@ $id = $_SESSION['user_id'] ?? '3';
 $name = '';
 
 
+
+
+
 $sql = "SELECT * FROM user_form WHERE id=$id";
 $user = mysqli_query($conn, $sql);
 
@@ -17,6 +20,7 @@ if (mysqli_num_rows($user) > 0) {
   $landmark = $row["landmark"];
   $city = $row["city"];
   $province = $row["province"];
+  $archipelago = $row["archipelago"];
   $zip = $row["zip"];
   $storedPassword = $row["checkout_pass"];
 }
@@ -257,6 +261,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         'product_id' => $cartItem['product_id'],
                         'quantity' => $cartItem['quantity'],
                         'size' => $cartItem['size'],
+                        'weight' => $cartItem['weight'],
                     ];
                 }
 
@@ -273,11 +278,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $product_id = $item['product_id'];
                             $qty = $item['quantity'];
                             $size = $item['size'];
+                            $weight = $item['weight'];
 
                             mysqli_query($conn, "UPDATE products SET quantity = quantity - $qty WHERE id = '$product_id'");
                             mysqli_query($conn, "INSERT INTO notifications SET user_id='$seller_id', notification='A buyer placed an order. Go to the orders page for more information.'");
                             mysqli_query($conn, "UPDATE products SET sales = sales + $qty WHERE id = '$product_id'");
-                            $addItem = "INSERT INTO items (order_id, user_id, product_id, seller_id, qty, size) VALUES ('$order_id', '$id', '$product_id', '$seller_id', '$qty', '$size')";
+                            $addItem = "INSERT INTO items (order_id, user_id, product_id, seller_id, qty, size, weight) VALUES ('$order_id', '$id', '$product_id', '$seller_id', '$qty', '$size','$weight')";
                             mysqli_query($conn, $addItem);
                         }
                     } else {
@@ -299,6 +305,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 else {
     $getCart = "SELECT * FROM cart WHERE user_id=$id";
     $cartResult = mysqli_query($conn, $getCart);
+
+
+
     
   }
 
@@ -440,6 +449,7 @@ else {
           <tbody>
             <?php
             $cart = FALSE;
+            $shipping_fee_total = 0;
             if (mysqli_num_rows($cartResult) > 0) {
               $cart = TRUE;
               $total = 0;
@@ -453,16 +463,41 @@ else {
                   <td><?= $row["size"] ?></td>
                   <td>₱<?= number_format($row["quantity"] * $row["price"], 2) ?></td>
                 </tr>
-              <?php } ?>
+           
               <tr>
                 <td></td>
                 <td class="text-right font-weight-bold" colspan="3">Shipping Fee</td>
-                <td>₱45.00</td>
+
+                <td> 
+                <?php    
+                  $product_weight = $row["weight"]; // Get the product weight
+
+                  if(($product_weight == "501g-1kg")){
+                           // 0g-500g weight range
+                          if ($archipelago == "Visayas") {
+                            $shipping_fee = 85 * $row["quantity"];
+                           // Adjust the format as needed
+                          }elseif ($user_archipelago == "Luzon") {
+                            $shipping_fee = 100 * $row["quantity"]; // Change 100 to your desired fee for luzon
+                         
+                          }
+                          echo number_format($shipping_fee, 2);
+                          $shipping_fee_total += $shipping_fee; 
+
+                  }elseif ($product_weight > 500 && $product_weight <= 1000) {
+
+                  }
+                  
+                ?>
+                </td>
+
+
               </tr>
+              <?php } ?>
               <tr>
                 <td></td>
                 <td class="text-right font-weight-bold" colspan="3">Total</td>
-                <td>₱<?= number_format($total + 45.00, 2) ?></td>
+                <td>₱<?= number_format($total + $shipping_fee_total, 2) ?></td>
               </tr>
             <?php } else {
               $cart = FALSE;
@@ -489,17 +524,6 @@ else {
         <?php } ?>
         <a href="cart-main.php" class="btn btn-light btn-block mb-2">Back to Cart</a>
 
-        <div class="card">
-          <div class="card-body">
-            <p class="font-weight-bold">Order Policy:</p>
-            <ul>
-              <li>Orders will be processed and shipped within 2-3 business days.</li>
-              <li>We offer free shipping for orders over ₱100.</li>
-              <li>All orders come with a 5-day money-back guarantee.</li>
-              <li>If you have any questions or concerns, please contact us at netgosyo398@gmail.com.</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   </div>

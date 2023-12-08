@@ -19,6 +19,7 @@ if ($res = mysqli_fetch_array($findresult)) {
     $landmark = $res['landmark'] ?? '';
     $city = $res['city'] ?? '';
     $province = $res['province'] ?? '';
+    $archipelago = $res['archipelago'] ?? '';
     $zip = $res['zip'] ?? '';
     $dateofbirth = $res['dateofbirth'] ?? '';
     $gender = $res['gender'] ?? '';
@@ -331,6 +332,7 @@ if ($res = mysqli_fetch_array($findresult)) {
         $phonenumber = $_POST['number'];
         $address = $_POST['address'];
         $address2 = $_POST['address2'];
+        $archipelago = $_POST['archipelago'];
         $landmark = $_POST['landmark'];
         $city = $_POST['city'];
         $province = $_POST['province'];
@@ -394,7 +396,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                     rename($new_file_name, $folder.$new_image_name);
                 }
             }
-            $result = mysqli_query($conn, "UPDATE user_form SET fullname='$fullname', username='$username', email='$email', phonenumber='$phonenumber', address='$address', address2='$address2', landmark='$landmark', city='$city', province='$province', zip='$zip', dateofbirth='$dateofbirth', gender='$gender' WHERE id = '$user_id'");
+            $result = mysqli_query($conn, "UPDATE user_form SET fullname='$fullname', username='$username', email='$email', phonenumber='$phonenumber', address='$address', address2='$address2', archipelago='$archipelago', landmark='$landmark', city='$city', province='$province', zip='$zip', dateofbirth='$dateofbirth', gender='$gender' WHERE id = '$user_id'");
             if (mysqli_query($conn, $sql)) {
                 header('location: Profile_settings.php?status=Your data has been updated');
             } else {
@@ -473,12 +475,17 @@ if ($res = mysqli_fetch_array($findresult)) {
                                         <div class="mt-2 col-md-6"><label class="labels"
                                                 style="font-size: 17px;">Archipelago <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
                                                 <select name="archipelago" class="form-control" >
-                                                <option selected>Choose Archipelago</option>
-                                                <option value="1">Luzon</option>
-                                                <option value="2">Visayas</option>
-                                                <option value="3">Mindanao</option>
-                                                <option value="3">NCR</option>
-                                                <option value="3">ISLAND</option>
+                                                <?php
+                                                    $archipelagoOptions = ["Luzon", "Visayas", "Mindanao", "NCR", "ISLAND"];
+
+                                                    foreach ($archipelagoOptions as $option) {
+                                                        if ($archipelago !== $option) {
+                                                            echo '<option value="' . $option . '">' . $option . '</option>';
+                                                        } else {
+                                                            echo '<option value="' . $archipelago . '" selected>' . $archipelago . '</option>';
+                                                        }
+                                                    }
+                                                    ?>
                                                 </select>
                                         </div>
 
