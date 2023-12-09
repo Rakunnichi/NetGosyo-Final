@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2023 at 06:25 PM
+-- Generation Time: Dec 09, 2023 at 04:07 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -37,7 +37,8 @@ CREATE TABLE `cart` (
   `image` varchar(100) NOT NULL,
   `quantity` int(100) NOT NULL,
   `size` varchar(250) NOT NULL,
-  `weight` varchar(250) NOT NULL
+  `weight` varchar(250) NOT NULL,
+  `archipelago` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -69,18 +70,17 @@ CREATE TABLE `items` (
   `seller_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
   `size` varchar(250) NOT NULL,
-  `weight` varchar(250) NOT NULL
+  `weight` varchar(250) NOT NULL,
+  `archipelago` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`item_id`, `order_id`, `user_id`, `product_id`, `seller_id`, `qty`, `size`, `weight`) VALUES
-(99, 95, 45, 4, 8, 1, 'LARGE', '0'),
-(100, 96, 45, 9, 8, 1, 'SMALL', '0'),
-(101, 97, 45, 5, 39, 1, 'MEDIUM', '0'),
-(103, 99, 45, 43, 7, 1, 'none', '501g-1kg');
+INSERT INTO `items` (`item_id`, `order_id`, `user_id`, `product_id`, `seller_id`, `qty`, `size`, `weight`, `archipelago`) VALUES
+(104, 100, 45, 43, 7, 1, 'none', '501g-1kg', 'Visayas'),
+(105, 101, 45, 43, 7, 2, 'none', '501g-1kg', 'Luzon');
 
 -- --------------------------------------------------------
 
@@ -125,7 +125,13 @@ INSERT INTO `notifications` (`notification_id`, `user_id`, `notification`, `noti
 (206, 8, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-07 13:12:58', '2023-12-07 13:12:58'),
 (207, 39, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-07 13:12:58', '2023-12-07 13:12:58'),
 (208, 7, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-09 00:50:48', '2023-12-09 00:50:48'),
-(209, 7, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-09 00:53:26', '2023-12-09 00:53:26');
+(209, 7, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-09 00:53:26', '2023-12-09 00:53:26'),
+(210, 3, 'A new user registered to NetGosyo. Congratulations!', '2023-12-09 21:31:28', '2023-12-09 21:31:28'),
+(211, 61, 'Thank you for registering to NetGosyo. Have a happy shopping!', '2023-12-09 21:31:28', '2023-12-09 21:31:28'),
+(212, 7, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-09 21:39:04', '2023-12-09 21:39:04'),
+(213, 7, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-09 21:48:29', '2023-12-09 21:48:29'),
+(214, 45, 'The seller accepted your order. Please refer to your purchases page for more Information!', '2023-12-09 22:00:56', '2023-12-09 22:00:56'),
+(215, 45, 'The seller accepted your order. Please refer to your purchases page for more Information!', '2023-12-09 22:01:19', '2023-12-09 22:01:19');
 
 -- --------------------------------------------------------
 
@@ -156,10 +162,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `order_number`, `name`, `contact`, `address`, `city`, `province`, `zip`, `pmode`, `status`, `proof_img`, `order_added`, `order_updated`, `seller_id`) VALUES
-(95, 45, 'ECNC17019232608', 'Earl Cartney N. Centino', '09682601128', 'San Jose, Rainbow Village', 'Tacloban City', 'Leyte', '6500', 'Cash on Delivery', 'Pending', '', '2023-12-07 12:27:40', NULL, 8),
-(96, 45, 'ECNC17019259788', 'Earl Cartney N. Centino', '09682601128', 'San Jose, Rainbow Village', 'Tacloban City', 'Leyte', '6500', 'Cash on Delivery', 'Pending', '', '2023-12-07 13:12:58', NULL, 8),
-(97, 45, 'ECNC170192597839', 'Earl Cartney N. Centino', '09682601128', 'San Jose, Rainbow Village', 'Tacloban City', 'Leyte', '6500', 'Cash on Delivery', 'Pending', '', '2023-12-07 13:12:58', NULL, 39),
-(99, 45, 'ECNC17020544067', 'Earl Cartney N. Centino', '09682601128', 'San Jose, Rainbow Village', 'Tacloban City', 'Leyte', '6500', 'Cash on Delivery', 'Pending', '', '2023-12-09 00:53:26', NULL, 7);
+(100, 45, 'ECNC17021291447', 'Earl Cartney N. Centino', '09682601128', 'San Jose, Rainbow Village', 'Tacloban City', 'Leyte', '6500', 'Cash on Delivery', 'To-Ship', '1702130471-528725.jpg', '2023-12-09 21:39:04', '2023-12-09 22:01:11', 7),
+(101, 45, 'ECNC17021297097', 'Earl Cartney N. Centino', '09682601128', 'San Jose, Rainbow Village', 'Tacloban City', 'Leyte', '6500', 'Cash on Delivery', 'To-Recieve', '1702130508-909769.png', '2023-12-09 21:48:29', '2023-12-09 22:01:48', 7);
 
 -- --------------------------------------------------------
 
@@ -223,7 +227,7 @@ INSERT INTO `products` (`id`, `user_id`, `name`, `price`, `image`, `item_brand`,
 (30, 7, 'Shamrock Utap', '50', '1700649392-Picture15.png', 'Foods', 239, 'With more than 70 years of excellent baking experience, Shamrock has become one of Cebu’s living icons in homegrown goodness. And to this day, Shamrock continues to earn its place in the taste buds of both local and foreign visitors who all delight in shamrock’s famous “Otap” and other baked specialties.', 1, '', '2023-12-04 15:14:01'),
 (31, 7, 'Pastillas de leche ', '20', '1700649517-Picture16.png', 'Foods', 300, 'Looking for the perfect sweet treat? Try this Pastillas de Leche recipe! These Filipino candies made with sugar and milk are soft and creamy bites of heaven. Make a big batch for gift-giving or to keep on hand for anytime cravings.', 0, '', '2023-11-22 10:38:37'),
 (36, 48, 'Samsung Galaxy ', '2500', '1701783567-Iphonethis.png', 'Gadget', 500, 'asdadasdasd', 0, '501g-1kg', '2023-12-08 14:53:59'),
-(43, 7, 'Sample 2', '500', '1702043640-1702024674.png', 'Gadget', 43, 'sample testing product', 2, '501g-1kg', '2023-12-08 16:53:26');
+(43, 7, 'Sample 2', '500', '1702043640-1702024674.png', 'Gadget', 40, 'sample testing product', 5, '501g-1kg', '2023-12-09 13:48:29');
 
 -- --------------------------------------------------------
 
@@ -293,7 +297,7 @@ INSERT INTO `user_form` (`id`, `fullname`, `email`, `username`, `password`, `che
 (7, 'Coline Lorriene Aguipo', 'colineaguipo05@gmail.com', 'Coline51', '81dc9bdb52d04dc20036dbd8313ed055', '0', '09154715779', 'Rainbow Village Tacloban City', '', '', '', 'Tanauan', 'Leyte', '4027', '2000-02-09', 'Female', 'profile_1030987840.png', 'Pasalubong', 'Treat your taste buds to the flavors of Tacloban with our mouthwatering local foods, perfect for pasalubong or your next fiesta.\r\n\r\nMade with care using time-honored recipes and the freshest local ingredients\r\n\r\nWide selection including suman sa ibos, binagol, moron, and more\r\n\r\nSupport local farmers and food artisans\r\n\r\nOur top-quality local delicacies capture the rich culinary traditions of the Tacloban region. The suman sa ibos features sticky rice wrapped in fragrant coconut leaves, with an irresistibly sweet and nutty coconut jam filling.\r\n\r\nGive your family and friends a taste of authentic Tacloban culture with food gifts lovingly crafted to share and enjoy. These hand-made treats spotlight the care and skill of local food makers using long-held recipes and techniques.', '', '797b4f3f68b9118943e03241b7335940NetGosyo', 1, '2023-12-05 13:23:22', '', 1, 0, 0),
 (8, 'Joey Raymund Macasusi', 'kuyaey30@gmail.com', 'KuyaEy', '202cb962ac59075b964b07152d234b70', '', '09154715772', '1st Street', '', '', '', 'Santa Fe', 'Leyte', '6513', '2015-02-10', 'Male', 'profile_1123099532.png', 'Local Treasures', 'Discover the clothes, gadgets, and accessories that will make you stand out from the crowd! Our selection of the latest fashion, technology, and gear has something for everyone.\r\n\r\nHuge selection of stylish clothes for men, women, and kids - from casual wear to formal attire\r\nCutting-edge phones and gadgets with all the latest features and capabilities\r\nQuality bags, backpacks, and accessories to carry your essentials in style\r\nStay on top of all the hottest trends and get compliments wherever you go. Our affordable prices make it easy to refresh your look as often as you like.\r\n\r\nMake a statement and express your personal style with confidence. Our products make looking and feeling your best effortless!', '', '', 1, '2023-12-05 13:27:17', 'id_pic_177193073.jpg', 1, 0, 0),
 (39, 'John Rey Amith', 'centino.earlcartney.n@gmail.com', 'Seler101', '81dc9bdb52d04dc20036dbd8313ed055', '0', '09154715772', 'Cogon San Jose', '', '', '', 'Tacloban City', 'Leyte', '', '2023-09-12', 'Male', 'profile_1223238167.png', 'Ukay-Ukay', 'Stand out from the crowd with these one-of-a-kind vintage apparels! This stylish clothing takes you back to iconic eras with authentic retro designs.\r\n\r\nGenuine vintage pieces from the 50s, 60s, 70s, and beyond\r\nUnique fabrics and patterns you won\'t find anywhere else\r\nCarefully curated collection of dresses, tops, bottoms, and accessories\r\nWith these vintage apparels, you\'ll showcase your bold personality and love of retro style. The flattering fits and high-quality construction ensure you look as good as you feel in these conversation-starting classics.\r\n\r\nFor trendsetters and vintage devotees who want effortless chic style, these vintage apparels are your ticket to timeless cool. Wear them to stand out in any crowd while paying homage to iconic fashion history.\r\n\r\nVersion 2:\r\n\r\nTake your wardrobe back in time with these one-of-a-kind vintage apparels! Lovingly curated from iconic eras, these retro gems are your new secret weapons for showstopping style.\r\n\r\nAuthentic designs from the most stylish decades\r\nFabrics and patterns with true vintage charm\r\nDresses, tops, bottoms and accessories for head-to-toe retro looks\r\nImagine the compliments you\'ll get when you walk into the room looking like a glamorous star from the past. With impeccable fits tailored to flatter, these vintage apparels make you look as gorgeous as you feel.\r\n\r\nFor fashionistas and vintage devotees, these apparels are your ticket to era-hopping chic. Express your bold personality while paying homage to the past with the ultimate vintage classics.', 'bf5e7bece61ea61e580983f2ce115bfd', '', 1, '2023-12-05 13:29:59', '', 0, 1, 0),
-(45, 'Earl Cartney N. Centino', 'rakunn777@gmail.com', 'Ran1020', '81dc9bdb52d04dc20036dbd8313ed055', '0ae84817365fa50ae008311381d052a0', '09682601128', 'San Jose, Rainbow Village', 'Taboan, Tacloban', 'Visayas', 'Near Madisson Park', 'Tacloban City', 'Leyte', '6500', '2023-11-13', '', 'profile_2094043675.png', 'user', '', 'e92f29283cf4e4c42e7a14286efdb22e', '7dea3ba66d3dfe004c6aba00a4415f83NetGosyo', 1, '2023-12-08 14:16:36', NULL, NULL, 0, 1),
+(45, 'Earl Cartney N. Centino', 'rakunn777@gmail.com', 'Ran1020', '81dc9bdb52d04dc20036dbd8313ed055', '0ae84817365fa50ae008311381d052a0', '09682601128', 'San Jose, Rainbow Village', 'Taboan, Tacloban', 'Luzon', 'Near Madisson Park', 'Tacloban City', 'Leyte', '6500', '2023-11-13', '', 'profile_2094043675.png', 'user', '', 'e92f29283cf4e4c42e7a14286efdb22e', '7dea3ba66d3dfe004c6aba00a4415f83NetGosyo', 1, '2023-12-09 13:46:45', NULL, NULL, 0, 1),
 (48, 'Arvin Felicen', 'rakunn719@gmail.com', 'Arvin2020', '81dc9bdb52d04dc20036dbd8313ed055', '', '09682601128', 'Fatima Village', '', '', '', 'Abuyog', 'Leyte', '', '', 'Male', 'profile_1938960060.png', 'Arvin`s Gadgets', 'Whether you need to send emails on the go, stream movies, or video chat with friends, Gadgets\' laptops and phones have the specs to handle it all. From lightweight notebooks to tablets to smartphones, your new device is ready to tackle work and play with ease.\r\n\r\nSay goodbye to low storage, slow processing speeds, and short battery life. Gadgets offers stylish, innovative devices built for today\'s nonstop lifestyles. And with a range of prices, there\'s something for every budget.\r\n\r\nJoin the Gadgets revolution and upgrade your tech - and your life. Find the gadget that fits you best today.', 'c335cd45e5b7fcd2083203aab2879dca', '', 1, '2023-12-07 07:31:50', NULL, NULL, 0, 0);
 
 --
@@ -368,7 +372,7 @@ ALTER TABLE `user_form`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=221;
 
 --
 -- AUTO_INCREMENT for table `convo`
@@ -380,7 +384,7 @@ ALTER TABLE `convo`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -392,13 +396,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT for table `pmethod`
@@ -422,7 +426,7 @@ ALTER TABLE `review_table`
 -- AUTO_INCREMENT for table `user_form`
 --
 ALTER TABLE `user_form`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
