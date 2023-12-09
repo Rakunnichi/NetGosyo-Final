@@ -26,6 +26,7 @@ if (isset($_POST['submit'])) {
     $checkoutpass = mysqli_real_escape_string($conn, md5($_POST['checkpass']));
     $concheckoutpass = mysqli_real_escape_string($conn, md5($_POST['concheckpass']));
     $phone = mysqli_real_escape_string($conn, $_POST['phone']);
+    $archipelago = mysqli_real_escape_string($conn, $_POST['archipelago']);
   
      //generating vkey
      $vkey = md5(time().$name);
@@ -53,7 +54,7 @@ if (isset($_POST['submit'])) {
       }
     
     else {
-      mysqli_query($conn, "INSERT INTO `user_form` (fullname, email, username, password, checkout_pass, phonenumber, vkey) VALUES('$name', '$email', '$username', '$pass', '$checkoutpass', '$phone', '$vkey')") or die('query failed');
+      mysqli_query($conn, "INSERT INTO `user_form` (fullname, email, username, password, checkout_pass, phonenumber, archipelago, vkey) VALUES('$name', '$email', '$username', '$pass', '$checkoutpass', '$phone', '$archipelago', '$vkey')") or die('query failed');
       $user_id = mysqli_insert_id($conn);
       mysqli_query($conn, "INSERT INTO notifications SET user_id='3', notification='A new user registered to NetGosyo. Congratulations!'");
       mysqli_query($conn, "INSERT INTO notifications SET user_id='$user_id', notification='Thank you for registering to NetGosyo. Have a happy shopping!'");
@@ -196,6 +197,17 @@ if (isset($_POST['submit'])) {
                                     </div>
                                     <div class="modal-body">
 
+                                        <div class="form-group" style="position: relative;">
+                                            <label for="archipelago" class="col-form-label"><b>Archipelago:</b></label>
+                                            <select name="archipelago" class="form-control" id="archipelago">
+                                            <option value="Luzon">Luzon</option>
+                                            <option value="Visayas">Visayas</option>
+                                            <option value="Mindanao">Mindanao</option>
+                                            <option value="NCR">NCR</option>
+                                            <option value="ISLAND">ISLAND</option>
+                                            </select>
+                                        </div>
+                                    
                                         <div class="form-group" style="position: relative;">
                                             <label for="recipient-name" class="col-form-label"><b>Checkout Password:</b></label>
                                             <input type="password"  style="padding-right: 30px;" name="checkpass" id="checkpass" class="form-control" tabindex="10" required>

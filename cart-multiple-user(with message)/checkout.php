@@ -262,6 +262,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         'quantity' => $cartItem['quantity'],
                         'size' => $cartItem['size'],
                         'weight' => $cartItem['weight'],
+                        'archipelago' => $cartItem['archipelago'],
                     ];
                 }
 
@@ -279,11 +280,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $qty = $item['quantity'];
                             $size = $item['size'];
                             $weight = $item['weight'];
+                            $archipelago = $item['archipelago'];
 
                             mysqli_query($conn, "UPDATE products SET quantity = quantity - $qty WHERE id = '$product_id'");
                             mysqli_query($conn, "INSERT INTO notifications SET user_id='$seller_id', notification='A buyer placed an order. Go to the orders page for more information.'");
                             mysqli_query($conn, "UPDATE products SET sales = sales + $qty WHERE id = '$product_id'");
-                            $addItem = "INSERT INTO items (order_id, user_id, product_id, seller_id, qty, size, weight) VALUES ('$order_id', '$id', '$product_id', '$seller_id', '$qty', '$size','$weight')";
+                            $addItem = "INSERT INTO items (order_id, user_id, product_id, seller_id, qty, size, weight, archipelago) VALUES ('$order_id', '$id', '$product_id', '$seller_id', '$qty', '$size','$weight' ,'$archipelago')";
                             mysqli_query($conn, $addItem);
                         }
                     } else {
@@ -477,7 +479,7 @@ else {
                           if ($archipelago == "Visayas") {
                             $shipping_fee = 85 * $row["quantity"];
                            // Adjust the format as needed
-                          }elseif ($user_archipelago == "Luzon") {
+                          }elseif ($archipelago == "Luzon") {
                             $shipping_fee = 100 * $row["quantity"]; // Change 100 to your desired fee for luzon
                          
                           }

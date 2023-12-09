@@ -477,7 +477,6 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                                                                 <th scope="col" width="50">Order #</th>
                                                                 <th scope="col">Name</th>
                                                                 <th scope="col">Address</th>
-                                                                <th scope="col">Total</th>
                                                                 <th scope="col">Proof</th>
                                                                 <th scope="col">Action</th>
                                                             </tr>
@@ -518,27 +517,23 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                                                                 <td><?= $row['address'] ?>, <?= $row['city'] ?>,
                                                                     <?= $row['province'] ?>,
                                                                     <?= $row['zip'] ?></td>
+                                                            
                                                                 <td>
-                                                                    ₱<?= number_format($row['total'] + 45.00, 2) ?><br>
-                                                                    <small
-                                                                        class="text-muted"><?= $row['order_added'] ?></small>
-                                                                </td>
+                                                                <?php if ($row['proof_img'] != NULL) { ?>
+                                                                       <div><a href="#" data-toggle="modal" data-target="#proofModal<?= $row['order_id'] ?>"><img src="order-proofs/<?= $row['proof_img'] ?>" style="border-radius: 5px; box-shadow: 1px 1px 5px #333333; width: 80%; max-width: 100px; " class="img-fluid" id="uploaded_image"></a></div>
                                                                 
-                                                                <td>
-                                                                <?php if ($row['proof_img'] != NULL) {
-                                                                        echo '<div><a href="#" data-toggle="modal" data-target="#proofModal"><img src="order-proofs/' . $row['proof_img'] . '" style="border-radius: 5px; box-shadow: 1px 1px 5px #333333; width: 80%; max-width: 100px; " class="img-fluid" id="uploaded_image"></a></div>';
-                                                                        }?>
+                                                                <?php  }?>
 
                                                                 
                                                                     <!-- Modal -->
-                                                                    <div class="modal fade" id="proofModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+                                                                    <div class="modal fade" id="proofModal<?= $row['order_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
                                                                         <div class="modal-dialog" role="document">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
                                                                                     <h5 class="modal-title" id="modalTitle">Proof of Shipment</h5>
                                                                                 </div>
                                                                                 <div class="modal-body text-center">
-                                                                                    <div><img src="order-proofs//<?= $row['proof_img'] ?>"
+                                                                                    <div><img src="order-proofs/<?= $row['proof_img'] ?>"
                                                                                             style="border-radius: 5px; box-shadow: 1px 1px 5px #333333; width: 100%; max-width: 800px; "
                                                                                             class="img-fluid" id="uploaded_image"></div>
                                                                                 </div>
@@ -685,23 +680,30 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
 					<td>₱${row.price}</td>
 					<td>${row.qty}</td>
                     <td>${row.size}</td>
-					<td>₱${row.qty * row.price}</td>
+					<td>₱${(row.qty * row.price).toFixed(2)}</td>
                    
 				</tr>
 			`;
             $('#tbody').append(html);
         });
-        const total_row = `
-				<tr>
-                   
-					<td>Total</td>
-					<td></td>					
-					<td></td>
-                    <td></td>
-					<td>₱${total + 45}</td>
+       
 
-				</tr>
-			`;
+              // Calculate shipping fee based on the weight and destination
+            let shipping_fee = 0;
+            items.forEach(row => {
+                let product_weight = row.weight;
+                if (product_weight === "501g-1kg") {
+                    if (row.archipelago === "Visayas") {
+                        shipping_fee += 85 * row.qty;
+                    } else if (row.archipelago === "Luzon") {
+                        shipping_fee += 100 * row.qty;
+                    }
+                } else if (product_weight > 500 && product_weight <= 1000) {
+                    // Handle shipping fee calculation for the weight range 501g-1kg
+                    // Add your logic here
+                }
+                // Add more conditions for other weight ranges if needed
+            });
 
             const shipping_row = `
 				<tr>
@@ -710,7 +712,19 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
 					<td></td>					
 					<td></td>
                     <td></td>
-					<td>₱ 45</td>
+					<td>₱${shipping_fee.toFixed(2)}</td>
+
+				</tr>
+			`;
+
+            const total_row = `
+				<tr>
+                   
+					<td>Total</td>
+					<td></td>					
+					<td></td>
+                    <td></td>
+					<td>₱${(total + shipping_fee).toFixed(2)}</td>
 
 				</tr>
 			`;
