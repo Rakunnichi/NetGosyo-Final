@@ -210,7 +210,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="input-group input-group-outline my-3">
                                             <div class="input-group">
                                             <label><b>Product Weight:</b></label>
@@ -221,9 +221,9 @@
                                                 <option value="1.01kg-3kg">1.01kg - 3kg</option>
                                                 <option value="3.01kg-4kg">3.01kg - 4kg</option>
                                                 <option value="4.01-5kgs">4.01 - 5kg</option>
-                                                <option value="5.0kg-6kg">5.0kg - 6kg</option>
+                                                <option value="5.0kg-6kg">5.01kg - 6kg</option>
                                                 <option value="6.01kg-7kg">6.01kg - 7kg</option>
-                                                <option value="7.0kg-8kg">7.0kg - 8kg</option>
+                                                <option value="7.0kg-8kg">7.01kg - 8kg</option>
                                                 <option value="8.01kg-9kg">8.01kg - 9kg</option>
                                                 <option value="9.01kg-10kg">9.01kg - 10kg</option>
                                                    
@@ -231,7 +231,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="input-group input-group-outline my-3">
                                             <div class="input-group">
                                             <label><b>Choose A Category:</b></label>

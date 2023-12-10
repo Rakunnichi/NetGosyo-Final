@@ -25,7 +25,6 @@ for ($month = 1; $month <= $currentMonth; $month++) {
     $orders = array();
     $totalMonthSales = 0;
     $totalPredictedMonthSales = 0;
-    $shippingFee = 45;
     while ($order_row = mysqli_fetch_assoc($orders_query)) {
         $order_id = $order_row['order_id'];
     
@@ -39,7 +38,7 @@ for ($month = 1; $month <= $currentMonth; $month++) {
         $items_rows = [];
         
         while ($item_row = mysqli_fetch_assoc($items_query)) {
-            $subtotal = $item_row['price'] * $item_row['qty'] + $shippingFee;
+            $subtotal = $item_row['price'] * $item_row['qty'];
             $total += $subtotal;
             $items_rows[] = $item_row;
         }

@@ -184,7 +184,7 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Order#</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Total</th>
+                  
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                       <th class="text-secondary opacity-7"></th>
                     </tr>
@@ -249,11 +249,7 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                       <b><?= $row['address'] ?>, <?= $row['city'] ?>, <?= $row['province'] ?>, <?= $row['zip'] ?></b>
                       </td>
 
-                      <td class="align-middle text-center">
-                        <p class="text-s font-weight-bold mb-0"> ₱<?= number_format($row['total'] + 45 , 2) ?></p>
-                        <p class="text-xs text-secondary mb-0"><b><?= $row['order_added'] ?></b></p>
-                       
-                      </td>
+                
 
                      <?php if ($row['status'] == 'Pending') { ?>
                       <td class="align-middle text-center text-sm">

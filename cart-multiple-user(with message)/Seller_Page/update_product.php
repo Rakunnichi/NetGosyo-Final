@@ -14,84 +14,9 @@
     $price = $row["price"];
     $image =$row["image"];
     $itembrand = $row["item_brand"];
+    $weight = $row["weight"];
     $quantity = $row["quantity"];
     $prod_desc = $row["description"];
-
-// if(isset($_POST['update-submit'])){
-   
-//     $id = mysqli_real_escape_string($conn, $_POST["id"]);
-//     $name = mysqli_real_escape_string($conn, $_POST["name"]);
-//     $price = mysqli_real_escape_string($conn, $_POST["price"]);
-//     $itembrand = mysqli_real_escape_string($conn, $_POST["item_brand"]);
-//     $quantity = mysqli_real_escape_string($conn, $_POST["quantity"]);
-//     // $prodcategory = mysqli_real_escape_string($conn, $_POST['category']);
-//     $proddesc = mysqli_real_escape_string($conn, $_POST['prod_desc']);
-   
-//     // $old_image = mysqli_real_escape_string($conn, $_POST["product_img_old"]);
-//     // $new_image = $_FILES['prod_image']['name'];
-
-//     // if($new_image != ''){
-
-//     //     $update_filename = $_FILES['prod_image']['name'];
-       
-//     // }else{
-//     //     $update_filename = $old_image;
-//     // }
-
-//     $file_name = $_FILES['image']['name'];
-//     $file_tmp = $_FILES['image']['tmp_name'];
-//     $file_type = $_FILES['image']['type'];
-//     $tmp = explode('.', $_FILES['image']['name']);
-//     $file_ext = strtolower(end($tmp));
-//     $extensions = array("jpeg","jpg","png");
-    
-//     if(in_array($file_ext,$extensions) === false){
-//         $addprodmessage[] = "Extension not allowed, please choose a JPEG or PNG file.";
-      
-//     }
-
-//     $new_file_name = time().'-'.$file_name;
-   
-//     $destination = "../Seller-uploads/".$new_file_name;
-//     move_uploaded_file($file_tmp, $destination);
-
-//     $sql = "UPDATE products SET name='$name', price = '$price', image = '$new_file_name', item_brand='$itembrand', quantity = '$quantity' , description = '$proddesc' where id=$id ";
-//     $result = $conn->query($sql);
-    
-//     if($result){
-
-//         // if($_FILES['image']['name'] != ''){
-//         //     move_uploaded_file($_FILES['image']['tmp_name'], "../Seller-uploads/".$_FILES['image']['name']);
-//         //     // unlink("../Seller-uploads/" .$old_image);
-//         // }
-
-       
-//         $updateprodmessage[] = "Product Updated Successfully";
-      
-       
-//     }else{
-//         $updateprodmessage[] = "Invalid query: " . $conn->error;
-//     }
-
-//     // }
-
-//     // if(file_exists("../Seller-uploads/". $_FILES['prod_image']['name'])){
-
-//     //     $filename = $_FILES['prod_image']['name'];
-//     //     $Message = "Image Already Exist!";
-
-//     // }else{
-
-      
-
-//     // }
-    
-   
-
-// }
-
-
-
 
 if(isset($_POST['update-submit'])) {
     
@@ -99,6 +24,7 @@ if(isset($_POST['update-submit'])) {
     $name = mysqli_real_escape_string($conn, $_POST["name"]);
     $price = mysqli_real_escape_string($conn, $_POST["price"]);
     $itembrand = mysqli_real_escape_string($conn, $_POST["item_brand"]);
+    $weight = mysqli_real_escape_string($conn, $_POST["prodweight"]);
     $quantity = mysqli_real_escape_string($conn, $_POST["quantity"]);
     // $prodcategory = mysqli_real_escape_string($conn, $_POST['category']);
     $proddesc = mysqli_real_escape_string($conn, $_POST['prod_desc']);
@@ -119,7 +45,7 @@ if(isset($_POST['update-submit'])) {
             // Move the uploaded file to the destination directory
             if(move_uploaded_file($file_tmp, $destination)) {
                 // Update the image field in the database only if a new image is provided
-                $sql = "UPDATE products SET name='$name', price='$price', image='$new_file_name', item_brand='$itembrand', quantity='$quantity', description='$proddesc' WHERE id=$id";
+                $sql = "UPDATE products SET name='$name', price='$price', image='$new_file_name', item_brand='$itembrand', quantity='$quantity', description='$proddesc', weight='$weight' WHERE id=$id";
             } else {
                 // Handle file upload failure
                 $updateprodmessage[] = "Failed to upload the image.";
@@ -130,7 +56,7 @@ if(isset($_POST['update-submit'])) {
         }
     } else {
         // If no new image is provided, update other fields excluding the image
-        $sql = "UPDATE products SET name='$name', price='$price', item_brand='$itembrand', quantity='$quantity', description='$proddesc' WHERE id=$id";
+        $sql = "UPDATE products SET name='$name', price='$price', item_brand='$itembrand', quantity='$quantity', description='$proddesc', weight='$weight' WHERE id=$id";
     }
 
     // Execute the SQL query
@@ -228,7 +154,7 @@ if(isset($_POST['update-submit'])) {
 
                                     <div class="col-md-6">
                                         <div class="input-group">
-                                            <label>Product Name:</label>
+                                            <label><b>Product Name:</b></label>
                                         </div>
                                         <div class="input-group input-group-outline my-3">
                                             <input type="text" value="<?php echo $name; ?>" name="name"
@@ -238,7 +164,7 @@ if(isset($_POST['update-submit'])) {
 
                                     <div class="col-md-6">
                                         <div class="input-group">
-                                            <label>Product Price:</label>
+                                            <label><b>Product Quantity:</b></label>
                                         </div>
                                         <div class="input-group input-group-outline my-3">
                                             <input type="number" name="price" value="<?php echo $price; ?>"
@@ -252,7 +178,7 @@ if(isset($_POST['update-submit'])) {
 
                                     <div class="col-md-6">
                                         <div class="input-group">
-                                            <label>Product Quantity:</label>
+                                            <label><b>Product Quantity:</b></label>
                                         </div>
                                         <div class="input-group input-group-outline my-3">
                                             <input type="number" name="quantity" value="<?php echo $quantity; ?>"
@@ -261,9 +187,9 @@ if(isset($_POST['update-submit'])) {
                                     </div>
 
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="input-group">
-                                            <label>Update Category:</label>
+                                            <label><b>Update Category:</b></label>
                                         </div>
                                         <div class="input-group input-group-outline my-3">
                                             <select class="form-control" name="item_brand" id="category">
@@ -284,10 +210,32 @@ if(isset($_POST['update-submit'])) {
                                         </div>
                                     </div>
 
+
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <label><b>Update Weight:</b></label>
+                                        </div>
+                                        <div class="input-group input-group-outline my-3">
+                                        <select class="form-control" name="prodweight" id="prodweight">
+                                            <?php
+                                            $weightOptions = array(
+                                                "0g-500g", "501g-1kg", "1.01kg-3kg", "3.01kg-4kg", "4.01-5kgs",
+                                                "5.01kg-6kg", "6.01kg-7kg", "7.01kg-8kg", "8.01kg-9kg", "9.01kg-10kg"
+                                            );
+
+                                            foreach ($weightOptions as $option) {
+                                                $selected = ($option == $weight) ? 'selected' : '';
+                                                echo "<option value=\"$option\" $selected>$option</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                        </div>
+                                    </div>
+
                                     <div class="col-md-3">
                                         <div class="input-group input-group-outline my-2">
                                             <div class="input-group">
-                                                <label>Add Image &#8595;</label>
+                                                <label><b>Update Image &#8595;</b></label>
                                             </div>
                                             <div class="image_area">
                                                 <label class="custum-file-upload" for="upload_image">
@@ -351,7 +299,7 @@ if(isset($_POST['update-submit'])) {
                                     <div class="col-md-9">
                                         <div class="input-group input-group-outline my-2">
                                             <div class="input-group">
-                                                <label>Description:</label>
+                                                <label><b>Description:</b></label>
                                             </div>
 
                                             <div class="input-group input-group-dynamic">

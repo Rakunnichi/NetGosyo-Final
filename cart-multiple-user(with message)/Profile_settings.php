@@ -332,7 +332,7 @@ if ($res = mysqli_fetch_array($findresult)) {
         $phonenumber = $_POST['number'];
         $address = $_POST['address'];
         $address2 = $_POST['address2'];
-        $archipelago = $_POST['archipelago'];
+        // $archipelago = $_POST['archipelago'];
         $landmark = $_POST['landmark'];
         $city = $_POST['city'];
         $province = $_POST['province'];
@@ -396,7 +396,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                     rename($new_file_name, $folder.$new_image_name);
                 }
             }
-            $result = mysqli_query($conn, "UPDATE user_form SET fullname='$fullname', username='$username', email='$email', phonenumber='$phonenumber', address='$address', address2='$address2', archipelago='$archipelago', landmark='$landmark', city='$city', province='$province', zip='$zip', dateofbirth='$dateofbirth', gender='$gender' WHERE id = '$user_id'");
+            $result = mysqli_query($conn, "UPDATE user_form SET fullname='$fullname', username='$username', email='$email', phonenumber='$phonenumber', address='$address', address2='$address2', landmark='$landmark', city='$city', province='$province', zip='$zip', dateofbirth='$dateofbirth', gender='$gender' WHERE id = '$user_id'");
             if (mysqli_query($conn, $sql)) {
                 header('location: Profile_settings.php?status=Your data has been updated');
             } else {
@@ -472,7 +472,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                                                 class="form-control" value="<?php echo $address2;?>">
                                         </div>
 
-                                        <div class="mt-2 col-md-6"><label class="labels"
+                                        <!-- <div class="mt-2 col-md-6"><label class="labels"
                                                 style="font-size: 17px;">Archipelago <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
                                                 <select name="archipelago" class="form-control" >
                                                 <?php
@@ -487,7 +487,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                                                     }
                                                     ?>
                                                 </select>
-                                        </div>
+                                        </div> -->
 
 
                                         <div class="mt-2 col-md-6"><label class="labels"

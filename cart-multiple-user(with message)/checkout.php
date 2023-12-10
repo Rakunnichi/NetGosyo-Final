@@ -474,19 +474,225 @@ else {
                 <?php    
                   $product_weight = $row["weight"]; // Get the product weight
 
-                  if(($product_weight == "501g-1kg")){
+                  if(($product_weight == "0g-500g")){
                            // 0g-500g weight range
-                          if ($archipelago == "Visayas") {
-                            $shipping_fee = 85 * $row["quantity"];
-                           // Adjust the format as needed
-                          }elseif ($archipelago == "Luzon") {
-                            $shipping_fee = 100 * $row["quantity"]; // Change 100 to your desired fee for luzon
+                          if ($archipelago == "Luzon") {
+                            $shipping_fee = 100 * $row["quantity"];
+                          
+                          }elseif ($archipelago == "Visayas") {
+                            $shipping_fee = 85 * $row["quantity"]; 
+                         
+                          }elseif ($archipelago == "Mindanao") {
+                            $shipping_fee = 105 * $row["quantity"]; 
+                         
+                          }elseif ($archipelago == "NCR") {
+                            $shipping_fee = 100 * $row["quantity"]; 
+                         
+                          }elseif ($archipelago == "ISLANDS") {
+                            $shipping_fee = 115 * $row["quantity"]; 
                          
                           }
+                          
                           echo number_format($shipping_fee, 2);
                           $shipping_fee_total += $shipping_fee; 
 
-                  }elseif ($product_weight > 500 && $product_weight <= 1000) {
+                  }elseif (($product_weight == "501g-1kg")) {
+                         // 501g-1kg weight range
+                         if ($archipelago == "Luzon") {
+                          $shipping_fee = 180 * $row["quantity"];
+                        
+                        }elseif ($archipelago == "Visayas") {
+                          $shipping_fee = 155 * $row["quantity"]; 
+                       
+                        }elseif ($archipelago == "Mindanao") {
+                          $shipping_fee = 175 * $row["quantity"]; 
+                       
+                        }elseif ($archipelago == "NCR") {
+                          $shipping_fee = 180 * $row["quantity"]; 
+                       
+                        }elseif ($archipelago == "ISLANDS") {
+                          $shipping_fee = 185 * $row["quantity"]; 
+                       
+                        }
+
+                        echo number_format($shipping_fee, 2);
+                        $shipping_fee_total += $shipping_fee; 
+
+                  }elseif (($product_weight == "1.01kg-3kg")) {
+                         // 1.01kg-3kg weight range
+                         if ($archipelago == "Luzon") {
+                          $shipping_fee = 200 * $row["quantity"];
+                        
+                        }elseif ($archipelago == "Visayas") {
+                          $shipping_fee = 180 * $row["quantity"]; 
+                       
+                        }elseif ($archipelago == "Mindanao") {
+                          $shipping_fee = 200 * $row["quantity"]; 
+                       
+                        }elseif ($archipelago == "NCR") {
+                          $shipping_fee = 200 * $row["quantity"]; 
+                       
+                        }elseif ($archipelago == "ISLANDS") {
+                          $shipping_fee = 210 * $row["quantity"]; 
+                       
+                        }
+                        
+                        echo number_format($shipping_fee, 2);
+                        $shipping_fee_total += $shipping_fee; 
+
+                  }elseif (($product_weight == "3.01kg-4kg")) {
+                        // 3.01kg-4kg weight range
+                        if ($archipelago == "Luzon") {
+                        $shipping_fee = 300 * $row["quantity"];
+                      
+                      }elseif ($archipelago == "Visayas") {
+                        $shipping_fee = 270 * $row["quantity"]; 
+                      
+                      }elseif ($archipelago == "Mindanao") {
+                        $shipping_fee = 290 * $row["quantity"]; 
+                      
+                      }elseif ($archipelago == "NCR") {
+                        $shipping_fee = 300 * $row["quantity"]; 
+                      
+                      }elseif ($archipelago == "ISLANDS") {
+                        $shipping_fee = 300 * $row["quantity"]; 
+                      
+                      }
+                      
+                      echo number_format($shipping_fee, 2);
+                      $shipping_fee_total += $shipping_fee; 
+
+                  }elseif (($product_weight == "4.01-5kgs")) {
+                    // 4.01-5kgs weight range
+                      if ($archipelago == "Luzon") {
+                      $shipping_fee = 400 * $row["quantity"];
+                    
+                    }elseif ($archipelago == "Visayas") {
+                      $shipping_fee = 360 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "Mindanao") {
+                      $shipping_fee = 380 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "NCR") {
+                      $shipping_fee = 400 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "ISLANDS") {
+                      $shipping_fee = 390 * $row["quantity"]; 
+                    
+                    }
+                    
+                    echo number_format($shipping_fee, 2);
+                    $shipping_fee_total += $shipping_fee; 
+
+                  }elseif (($product_weight == "5.01kg-6kg")) {
+                    // 5.01kg-6kg weight range
+                      if ($archipelago == "Luzon") {
+                      $shipping_fee = 500 * $row["quantity"];
+                    
+                    }elseif ($archipelago == "Visayas") {
+                      $shipping_fee = 455 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "Mindanao") {
+                      $shipping_fee = 475 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "NCR") {
+                      $shipping_fee = 500 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "ISLANDS") {
+                      $shipping_fee = 485 * $row["quantity"]; 
+                    
+                    }
+                    
+                    echo number_format($shipping_fee, 2);
+                    $shipping_fee_total += $shipping_fee; 
+
+                  }elseif (($product_weight == "6.01kg-7kg")) {
+                    // 6.01kg-7kg weight range
+                      if ($archipelago == "Luzon") {
+                      $shipping_fee = 635 * $row["quantity"];
+                    
+                    }elseif ($archipelago == "Visayas") {
+                      $shipping_fee = 565 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "Mindanao") {
+                      $shipping_fee = 595 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "NCR") {
+                      $shipping_fee = 630 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "ISLANDS") {
+                      $shipping_fee = 830 * $row["quantity"]; 
+                    
+                    }
+                    
+                    echo number_format($shipping_fee, 2);
+                    $shipping_fee_total += $shipping_fee; 
+
+                  }elseif (($product_weight == "7.01kg-8kg")) {
+                    // 7.01kg-8kg weight range
+                      if ($archipelago == "Luzon") {
+                      $shipping_fee = 675 * $row["quantity"];
+                    
+                    }elseif ($archipelago == "Visayas") {
+                      $shipping_fee = 605 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "Mindanao") {
+                      $shipping_fee = 635 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "NCR") {
+                      $shipping_fee = 570 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "ISLANDS") {
+                      $shipping_fee = 890 * $row["quantity"]; 
+                    
+                    }
+                    
+                    echo number_format($shipping_fee, 2);
+                    $shipping_fee_total += $shipping_fee; 
+
+                  }elseif (($product_weight == "8.01kg-9kg")) {
+                    // 8.01kg-9kg weight range
+                      if ($archipelago == "Luzon") {
+                      $shipping_fee = 787 * $row["quantity"];
+                    
+                    }elseif ($archipelago == "Visayas") {
+                      $shipping_fee = 705 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "Mindanao") {
+                      $shipping_fee = 751 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "NCR") {
+                      $shipping_fee = 782 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "ISLANDS") {
+                      $shipping_fee = 1020 * $row["quantity"]; 
+                    
+                    }
+                    
+                    echo number_format($shipping_fee, 2);
+                    $shipping_fee_total += $shipping_fee; 
+
+                  }elseif (($product_weight == "9.01kg-10kg")) {
+                    // 9.01kg-10kg weight range
+                      if ($archipelago == "Luzon") {
+                      $shipping_fee = 899 * $row["quantity"];
+                    
+                    }elseif ($archipelago == "Visayas") {
+                      $shipping_fee = 805 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "Mindanao") {
+                      $shipping_fee = 867 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "NCR") {
+                      $shipping_fee = 894 * $row["quantity"]; 
+                    
+                    }elseif ($archipelago == "ISLANDS") {
+                      $shipping_fee = 1150 * $row["quantity"]; 
+                    
+                    }
+                    
+                    echo number_format($shipping_fee, 2);
+                    $shipping_fee_total += $shipping_fee; 
 
                   }
                   
@@ -524,7 +730,7 @@ else {
         <?php } else { ?>
           <a href="index.php" class="btn color-orange-bg btn-block mb-2">Shop Now!</a>
         <?php } ?>
-        <a href="cart-main.php" class="btn btn-light btn-block mb-2">Back to Cart</a>
+        <a href="cart-main.php" class="btn btn-secondary btn-block mb-2">Back to Cart</a>
 
       </div>
     </div>
