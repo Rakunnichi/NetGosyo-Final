@@ -367,7 +367,20 @@
                     }else if (row.archipelago === "ISLAND") {
                         shipping_fee += 1150 ;
                     }
-                }         
+                }else{
+                    
+                    if (row.archipelago === "Visayas") {
+                        shipping_fee += 805 ;
+                    } else if (row.archipelago === "NCR") {
+                        shipping_fee += 894 ;
+                    }else if (row.archipelago === "Luzon") {
+                        shipping_fee += 899;
+                    }else if (row.archipelago === "Mindanao") {
+                        shipping_fee += 867 ;
+                    }else if (row.archipelago === "ISLAND") {
+                        shipping_fee += 1150 ;
+                    }
+                }          
 
             });
 

@@ -694,6 +694,30 @@ else {
                     echo number_format($shipping_fee, 2);
                     $shipping_fee_total += $shipping_fee; 
 
+                  }else{
+
+                     // 9.01kg-10kg weight range
+                     if ($archipelago == "Luzon") {
+                      $shipping_fee = 899;
+                    
+                    }elseif ($archipelago == "Visayas") {
+                      $shipping_fee = 805; 
+                    
+                    }elseif ($archipelago == "Mindanao") {
+                      $shipping_fee = 867; 
+                    
+                    }elseif ($archipelago == "NCR") {
+                      $shipping_fee = 894; 
+                    
+                    }elseif ($archipelago == "ISLANDS") {
+                      $shipping_fee = 1150; 
+                    
+                    }
+                    
+                    echo number_format($shipping_fee, 2);
+                    $shipping_fee_total += $shipping_fee; 
+
+
                   }
                   
                 ?>
