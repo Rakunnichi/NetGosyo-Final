@@ -34,12 +34,6 @@ if(isset($_POST['update-submit'])) {
         // File upload logic
         
 
-     
-
-
-
-
-
         $file_name = $_FILES['image']['name'];
         $file = $_FILES['image']['tmp_name'];
         $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
@@ -49,7 +43,7 @@ if(isset($_POST['update-submit'])) {
         $file_name_array = explode('.', $file_name);
         $extension = end($file_name_array);
         $new_image_name = 'profile_'.rand().'.'.$extension;
-        
+
         // Check if the file extension is allowed
         if(in_array($file_ext, $extensions)) {
 

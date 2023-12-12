@@ -71,7 +71,7 @@ while ($row = $result->fetch_assoc()) :
         
         <div class="row">
             <div class="col-sm-6">
-                <img src="Seller-uploads/<?php echo $row['image'] ?? "1.png"; ?>" alt="product" class="img-fluid">
+                <img src="Seller-uploads/<?php echo $row['image'] ?? "1.png"; ?>" alt="product" class="img-fluid" style="display: block; margin: auto;">
                 <div class="form-row pt-4 font-size-16 font-baloo">
 
                     <?php if($user_id == 3){
