@@ -218,9 +218,9 @@
                                     <div class="col-md-3">
                                         <div class="input-group input-group-outline my-3">
                                             <div class="input-group">
-                                            <label><b>Product Weight:</b></label>
+                                            <label><b>Product Weight (Grams):</b></label>
                                             </div>
-                                            <select class="form-control" name="prodweight" id="prodweight">                
+                                            <!-- <select class="form-control" name="prodweight" id="prodweight">                
                                                 <option value="0g-500g">0g - 500g</option>
                                                 <option value="501g-1kg">501g - 1kg</option>
                                                 <option value="1.01kg-3kg">1.01kg - 3kg</option>
@@ -232,7 +232,9 @@
                                                 <option value="8.01kg-9kg">8.01kg - 9kg</option>
                                                 <option value="9.01kg-10kg">9.01kg - 10kg</option>
                                                    
-                                            </select>
+                                            </select> -->
+                                            <input type="number" name="prodweight" placeholder="Product Weight(Grams)"
+                                                class="form-control" required>
                                         </div>
                                     </div>
 

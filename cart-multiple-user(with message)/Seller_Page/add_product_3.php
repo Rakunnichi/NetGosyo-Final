@@ -30,7 +30,7 @@
     $destination = "../Seller-uploads/".$new_file_name;
     move_uploaded_file($file_tmp, $destination);
     
-    mysqli_query($conn, "INSERT INTO `products` (user_id, name, price, image, item_brand, quantity, description, weight) VALUES('$user_id', '$prodname', '$prodprice', '$new_file_name', '$prodcategory', '$prodquantity' , '$prod_desc', '$prodweight')") or die ('query failed');
+    mysqli_query($conn, "INSERT INTO `products` (user_id, name, price, image, item_brand, quantity, description, prodweight) VALUES('$user_id', '$prodname', '$prodprice', '$new_file_name', '$prodcategory', '$prodquantity' , '$prod_desc', '$prodweight')") or die ('query failed');
        
     
     $addprodmessage[] = "Product Added Successfully";

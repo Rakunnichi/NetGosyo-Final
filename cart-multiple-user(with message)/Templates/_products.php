@@ -98,7 +98,7 @@ while ($row = $result->fetch_assoc()) :
                             <input type="hidden" name="product_name" value="<?= $row['name'] ?>">
                             <input type="hidden" name="product_price" value="<?= $row['price'] ?>">
                             <input type="hidden" name="product_image" value="<?= $row['image'] ?>">
-                            <input type="hidden" name="product_weight" value="<?= $row['weight'] ?>">
+                            <input type="hidden" name="product_weight" value="<?= $row['prodweight'] ?>">
                             <input type="hidden" name="product_archipelago" value="<?= $archipelago; ?>">
                             <input type="hidden" name="product_quantity" value="1">
                            
