@@ -32,18 +32,31 @@ if(isset($_POST['update-submit'])) {
     // Check if a new image is uploaded
     if(isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
         // File upload logic
+        
+
+     
+
+
+
+
+
         $file_name = $_FILES['image']['name'];
-        $file_tmp = $_FILES['image']['tmp_name'];
+        $file = $_FILES['image']['tmp_name'];
         $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
         $extensions = array("jpeg", "jpg", "png");
-
+        $folder = '../Seller-uploads/';
+        $new_file_name = $_POST['new_file'];
+        $file_name_array = explode('.', $file_name);
+        $extension = end($file_name_array);
+        $new_image_name = 'profile_'.rand().'.'.$extension;
+        
         // Check if the file extension is allowed
         if(in_array($file_ext, $extensions)) {
-            $new_file_name = time() . '-' . $file_name;
-            $destination = "../Seller-uploads/" . $new_file_name;
+
+           
 
             // Move the uploaded file to the destination directory
-            if(move_uploaded_file($file_tmp, $destination)) {
+            if(move_uploaded_file($file, $folder . $new_image_name)) {
                 // Update the image field in the database only if a new image is provided
                 $sql = "UPDATE products SET name='$name', price='$price', image='$new_file_name', item_brand='$itembrand', quantity='$quantity', description='$proddesc', weight='$weight' WHERE id=$id";
             } else {
@@ -237,6 +250,7 @@ if(isset($_POST['update-submit'])) {
                                             <div class="input-group">
                                                 <label><b>Update Image &#8595;</b></label>
                                             </div>
+                                            <input type="hidden" id="new_file" name="new_file" value='' />
                                             <div class="image_area">
                                                 <label class="custum-file-upload" for="upload_image">
                                                     <div class="icon1">

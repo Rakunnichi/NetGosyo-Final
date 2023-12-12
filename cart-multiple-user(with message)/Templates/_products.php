@@ -338,15 +338,14 @@ endwhile;
                             echo "<textarea class='form-control' name='comment' ></textarea>";
                             echo "</div>";
                             
-                        
 
+                           
                             if($user_id == 3){
                                 echo "<button type='submit' name='review_submit' class='btn color-orange-bg' disabled>Submit Review</button>";
                             }else{
                                 echo "<button type='submit' name='review_submit' class='btn color-orange-bg'>Submit Review</button>";
                             }
-                        
-                        
+                            
                             echo "</form>";
 
                             

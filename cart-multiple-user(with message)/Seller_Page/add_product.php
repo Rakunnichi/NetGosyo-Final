@@ -10,29 +10,34 @@
     $prod_desc = mysqli_real_escape_string($conn, $_POST['prod_desc']);
     $prodcategory = mysqli_real_escape_string($conn, $_POST['category']); 
     $prodweight = mysqli_real_escape_string($conn, $_POST['prodweight']);
-   
+    $folder = '../Seller-uploads/';
+    $file = $_FILES['image']['tmp_name'];
     $file_name = $_FILES['image']['name'];
-    $file_tmp = $_FILES['image']['tmp_name'];
-    $file_type = $_FILES['image']['type'];
-    $tmp = explode('.', $_FILES['image']['name']);
-    $file_ext = strtolower(end($tmp));
-    $extensions = array("jpeg","jpg","png");
-    
-    if(in_array($file_ext,$extensions) === false){
-        $addprodmessage[] = "Extension not allowed, please choose a JPEG or PNG file.";
-      
-    }else{
-    
-    $new_file_name = time().'-'.$file_name;
+    $new_file_name = $_POST['new_file'];
    
-    $destination = "../Seller-uploads/".$new_file_name;
-    move_uploaded_file($file_tmp, $destination);
+    
+    $file_name_array = explode('.', $file_name);
+    $extension = end($file_name_array);
+
+
+    $new_image_name = 'profile_'.rand().'.'.$extension;
+
+   
+    move_uploaded_file($file, $folder . $new_image_name);
     
     mysqli_query($conn, "INSERT INTO `products` (user_id, name, price, image, item_brand, quantity, description, weight) VALUES('$user_id', '$prodname', '$prodprice', '$new_file_name', '$prodcategory', '$prodquantity' , '$prod_desc', '$prodweight')") or die ('query failed');
        
     
     $addprodmessage[] = "Product Added Successfully";
-    }
+    
+    // if (isset($new_file_name)) {
+    //     $originalImagePath = "../Seller-uploads/" . $new_file_name;
+    //     if (file_exists($originalImagePath)) {
+    //         unlink($originalImagePath);
+    //     }
+    // }
+
+    
     
     
    
@@ -264,6 +269,7 @@
                                             <div class="input-group">
                                                 <label><b>Add Image &#8595;</b></label>
                                             </div>
+                                            <input type="hidden" id="new_file" name="new_file" value='' />
                                             <div class="image_area">
                                                 <label class="custum-file-upload" for="upload_image">
                                                     <div class="icon1">
