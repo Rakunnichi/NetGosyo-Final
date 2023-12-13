@@ -249,11 +249,9 @@ if ($res = mysqli_fetch_array($findresult)) {
                                 </a>
 
                                 <a href="Profile_reviews.php" class="nav-item nav-link has-icon nav-link-faded">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="currentColor" class="feather feather-settings mr-2">
-                                        <path
-                                            d="M4 4h16v12H5.17L4 17.17V4m0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h12v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z">
-                                        </path>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="feather feather-settings mr-2">
+                                        <path fill="currentColor"
+                                            d="M6 14h3.05l5-5q.225-.225.338-.513t.112-.562q0-.275-.125-.537T14.05 6.9l-.9-.95q-.225-.225-.5-.337t-.575-.113q-.275 0-.562.113T11 5.95l-5 5zm7-6.075L12.075 7zM7.5 12.5v-.95l2.525-2.525l.5.45l.45.5L8.45 12.5zm3.025-3.025l.45.5l-.95-.95zm.65 4.525H18v-2h-4.825zM2 22V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18H6zm3.15-6H20V4H4v13.125zM4 16V4z" />
                                     </svg>Reviews
                                 </a>
 
@@ -334,7 +332,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                         </div>
                         <div class="card-body">
 
-<?php
+                            <?php
     if (isset($_POST['update_user'])) {
         $fullname = $_POST['fullname'];
         $username = $_POST['username'];
@@ -449,35 +447,43 @@ if ($res = mysqli_fetch_array($findresult)) {
                                         <input type="hidden" name="user_id" value="<?php echo $fetch_user['id']; ?>">
 
                                         <div class="mt-3 col-md-6"><label class="labels" style="font-size: 17px;">Full
-                                                Name <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
+                                                Name <span
+                                                    style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
                                             <input type="text" name="fullname" placeholder="Enter your fullname"
                                                 class="form-control" value="<?php echo $fullname; ?>">
                                         </div>
 
                                         <div class="mt-3 col-md-6"><label class="labels"
-                                                style="font-size: 17px;">Username <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
+                                                style="font-size: 17px;">Username <span
+                                                    style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
                                             <input type="text" name="username" placeholder="Enter your username"
                                                 class="form-control" value="<?php echo $username; ?>">
                                         </div>
 
                                         <div class="mt-2 col-md-6"><label class="labels" style="font-size: 17px;">Email
-                                                Address <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
+                                                Address <span
+                                                    style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
                                             <input type="text" name="emails" placeholder="Enter your email address"
                                                 class="form-control" value="<?php echo $email; ?>">
                                         </div>
 
-                                        <div class="mt-2 col-md-6"><label class="labels" style="font-size: 17px;">Mobile Number <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span> <?php echo $numberVerified == 0 ? '<small><a style="color:red" href="verify-number.php?phone_number='.$phonenumber.'">(CLICK TO VERIFY)</a></small>' : ''; ?></label>
-                                            <input type="text" name="number" placeholder="Enter your mobile number" class="form-control" value="<?php echo $phonenumber; ?>" style="<?php echo $numberVerified == 0 ? 'border:1px solid red' : ''; ?>">
+                                        <div class="mt-2 col-md-6"><label class="labels" style="font-size: 17px;">Mobile
+                                                Number <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span>
+                                                <?php echo $numberVerified == 0 ? '<small><a style="color:red" href="verify-number.php?phone_number='.$phonenumber.'">(CLICK TO VERIFY)</a></small>' : ''; ?></label>
+                                            <input type="text" name="number" placeholder="Enter your mobile number"
+                                                class="form-control" value="<?php echo $phonenumber; ?>"
+                                                style="<?php echo $numberVerified == 0 ? 'border:1px solid red' : ''; ?>">
                                         </div>
 
                                         <div class="mt-2 col-md-6"><label class="labels"
-                                                style="font-size: 17px;">Default Address <span style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
+                                                style="font-size: 17px;">Default Address <span
+                                                    style="color: rgb(250, 1, 46); font-size: 14px;">*</span></label>
                                             <input type="text" name="address" placeholder="Enter your address"
                                                 class="form-control" value="<?php echo $address; ?>">
                                         </div>
 
-                                        <div class="mt-2 col-md-6"><label class="labels"
-                                                style="font-size: 17px;">Second Address (Optional)</label>
+                                        <div class="mt-2 col-md-6"><label class="labels" style="font-size: 17px;">Second
+                                                Address (Optional)</label>
                                             <input type="text" name="address2" placeholder="Enter your address"
                                                 class="form-control" value="<?php echo $address2;?>">
                                         </div>
@@ -518,8 +524,8 @@ if ($res = mysqli_fetch_array($findresult)) {
                                                 class="form-control" value="<?php echo $province; ?>">
                                         </div>
 
-                                        <div class="mt-2 col-md-6"><label class="labels"
-                                                style="font-size: 17px;">Zip Code</label>
+                                        <div class="mt-2 col-md-6"><label class="labels" style="font-size: 17px;">Zip
+                                                Code</label>
                                             <input type="number" name="zip" placeholder="Enter your zip code"
                                                 class="form-control" value="<?php echo $zip; ?>">
                                         </div>
@@ -553,10 +559,10 @@ if ($res = mysqli_fetch_array($findresult)) {
                                                 }
                                                 ?>
                                             </select>
-                                 
+
                                         </div>
 
-                                         <input type="hidden" id="new_file" name="new_file" value=''/>
+                                        <input type="hidden" id="new_file" name="new_file" value='' />
                                     </div>
 
 
@@ -595,8 +601,8 @@ if ($res = mysqli_fetch_array($findresult)) {
                                                 <div class="overlay">
                                                     <div class="text">Change Profile Image</div>
                                                 </div>
-                                                <input type="file" accept=".jpg, .jpeg, .png" name="image" class="image" id="upload_image"
-                                                    style="display:none" />
+                                                <input type="file" accept=".jpg, .jpeg, .png" name="image" class="image"
+                                                    id="upload_image" style="display:none" />
                                             </label>
                                         </form>
                                     </div>
@@ -636,7 +642,8 @@ if ($res = mysqli_fetch_array($findresult)) {
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title">Crop Image Before Upload</h5>
-                                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                            <button type="button" class="close" data-bs-dismiss="modal"
+                                                aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
@@ -655,7 +662,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                                         <div class="modal-footer">
                                             <button type="button" id="crop" class="btn btn-primary">Crop</button>
                                             <button type="button" class="btn btn-secondary"
-                                             data-bs-dismiss="modal">Cancel</button>
+                                                data-bs-dismiss="modal">Cancel</button>
                                         </div>
                                     </div>
                                 </div>
