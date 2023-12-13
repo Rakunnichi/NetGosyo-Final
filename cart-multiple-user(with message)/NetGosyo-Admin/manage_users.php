@@ -51,11 +51,6 @@
                     </div>
 
 
-                    <div class="ms-md-auto pe-md-3 d-flex align-items-center pt-3 p-l-2">
-
-
-
-
                         <div class="card-body px-0 pb-2">
                             <div class="table-responsive p-0">
                                 <table class="table align-items-center justify-content-center mb-0">
@@ -178,7 +173,7 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                   
                 </div>
             </div>
 
