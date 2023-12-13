@@ -327,12 +327,11 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                             </a>
 
                             <a href="Profile_reviews.php" class="nav-item nav-link has-icon nav-link-faded">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="currentColor" class="feather feather-settings mr-2">
-                                        <path
-                                            d="M4 4h16v12H5.17L4 17.17V4m0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h12v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z">
-                                        </path>
-                                    </svg>Reviews
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    class="feather feather-settings mr-2">
+                                    <path fill="currentColor"
+                                        d="M6 14h3.05l5-5q.225-.225.338-.513t.112-.562q0-.275-.125-.537T14.05 6.9l-.9-.95q-.225-.225-.5-.337t-.575-.113q-.275 0-.562.113T11 5.95l-5 5zm7-6.075L12.075 7zM7.5 12.5v-.95l2.525-2.525l.5.45l.45.5L8.45 12.5zm3.025-3.025l.45.5l-.95-.95zm.65 4.525H18v-2h-4.825zM2 22V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18H6zm3.15-6H20V4H4v13.125zM4 16V4z" />
+                                </svg>Reviews
                             </a>
 
                             <a href="Profile_notifications.php" class="nav-item nav-link has-icon nav-link-faded">
@@ -341,7 +340,8 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                                     stroke-linejoin="round" class="feather feather-bell mr-2">
                                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                                     <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                                </svg>Notification<span class="badge badge-danger ml-2"><?= mysqli_num_rows($notifications) ?>
+                                </svg>Notification<span
+                                    class="badge badge-danger ml-2"><?= mysqli_num_rows($notifications) ?>
                             </a>
                             <a href="Profile_changepass.php" class="nav-item nav-link has-icon nav-link-faded">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -360,7 +360,7 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                         <ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
                             <li class="nav-item">
                                 <a href="Profile_settings.php" class="nav-link has-icon"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="feather feather-user">
                                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -369,7 +369,7 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                             </li>
                             <li class="nav-item">
                                 <a href="Profile_purchases.php" class="nav-link has-icon active"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
                                         fill="currentColor" stroke-linejoin="round" class="feather feather-settings">
                                         <path
                                             d="M17 18a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2M1 2h3.27l.94 2H20a1 1 0 0 1 1 1c0 .17-.05.34-.12.5l-3.58 6.47c-.34.61-1 1.03-1.75 1.03H8.1l-.9 1.63l-.03.12a.25.25 0 0 0 .25.25H19v2H7a2 2 0 0 1-2-2c0-.35.09-.68.24-.96l1.36-2.45L3 4H1V2m6 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2m9-7l2.78-5H6.14l2.36 5H16Z">
@@ -378,25 +378,37 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                             </li>
                             <li class="nav-item">
                                 <a href="Profile_messages.php" class="nav-link has-icon"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
                                         fill="currentColor" stroke-linejoin="round" class="feather feather-bell">
                                         <path
                                             d="M4 4h16v12H5.17L4 17.17V4m0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h12v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z">
                                         </path>
                                     </svg></a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="Profile_reviews.php" class="nav-item nav-link has-icon nav-link-faded">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
+                                        class="feather feather-settings">
+                                        <path fill="currentColor"
+                                            d="M6 14h3.05l5-5q.225-.225.338-.513t.112-.562q0-.275-.125-.537T14.05 6.9l-.9-.95q-.225-.225-.5-.337t-.575-.113q-.275 0-.562.113T11 5.95l-5 5zm7-6.075L12.075 7zM7.5 12.5v-.95l2.525-2.525l.5.45l.45.5L8.45 12.5zm3.025-3.025l.45.5l-.95-.95zm.65 4.525H18v-2h-4.825zM2 22V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18H6zm3.15-6H20V4H4v13.125zM4 16V4z" />
+                                    </svg>
+                                </a>
+                            </li>
+
                             <li class="nav-item">
                                 <a href="Profile_notifications.php" class="nav-link has-icon"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="feather feather-bell">
                                         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                                         <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                                    </svg><span class="badge badge-danger ml-1"><?= mysqli_num_rows($notifications) ?></a>
+                                    </svg><span
+                                        class="badge badge-danger ml-1"><?= mysqli_num_rows($notifications) ?></a>
                             </li>
                             <li class="nav-item">
                                 <a href="Profile_changepass.php" class="nav-link has-icon"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="feather feather-shield">
                                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -481,7 +493,7 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                                             </div>
                                             <div class="card-body px-0 pb-2 mt-2 border-top">
                                                 <div class="table-responsive p-0">
-                                                    <table  class="table table-striped table-hover mb-0" id="myTable">
+                                                    <table class="table table-striped table-hover mb-0" id="myTable">
                                                         <thead>
                                                             <tr>
                                                                 <th scope="col" width="50">Order #</th>
@@ -499,23 +511,24 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                                                                 <td>
                                                                     <a href="javascript:" class="order"
                                                                         data-items='<?= json_encode($row["items"]); ?>'><?= $row['order_number'] ?></a><br>
-                                                                    <small
-                                                                        class="text-muted"><b>Status: <?= $row['status'] ?></b></small>
-                                                                        <br>
-                                                                      
-                                                                <?php
+                                                                    <small class="text-muted"><b>Status:
+                                                                            <?= $row['status'] ?></b></small>
+                                                                    <br>
+
+                                                                    <?php
                                                                    
                                                                         $select_ordershop = mysqli_query($conn, "SELECT * FROM `user_form` WHERE id = '$seller_id'") or die('query failed!');
                                                                         if(mysqli_num_rows($select_ordershop) > 0){
                                                                         while($fetch_ordershop = mysqli_fetch_assoc($select_ordershop)){    
                                                                 ?>
 
-                                                                        <small class="text-muted"><?php echo $fetch_ordershop['shopname']; ?></small>
-                                                                <?php
+                                                                    <small
+                                                                        class="text-muted"><?php echo $fetch_ordershop['shopname']; ?></small>
+                                                                    <?php
                                                                     };
                                                                 }; 
-                                                                 ?>   
-                                                           
+                                                                 ?>
+
                                                                 </td>
 
                                                                 <td>
@@ -527,28 +540,42 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                                                                 <td><?= $row['address'] ?>, <?= $row['city'] ?>,
                                                                     <?= $row['province'] ?>,
                                                                     <?= $row['zip'] ?></td>
-                                                            
-                                                                <td>
-                                                                <?php if ($row['proof_img'] != NULL) { ?>
-                                                                       <div><a href="#" data-toggle="modal" data-target="#proofModal<?= $row['order_id'] ?>"><img src="order-proofs/<?= $row['proof_img'] ?>" style="border-radius: 5px; box-shadow: 1px 1px 5px #333333; width: 80%; max-width: 100px; " class="img-fluid" id="uploaded_image"></a></div>
-                                                                
-                                                                <?php  }?>
 
-                                                                
+                                                                <td>
+                                                                    <?php if ($row['proof_img'] != NULL) { ?>
+                                                                    <div><a href="#" data-toggle="modal"
+                                                                            data-target="#proofModal<?= $row['order_id'] ?>"><img
+                                                                                src="order-proofs/<?= $row['proof_img'] ?>"
+                                                                                style="border-radius: 5px; box-shadow: 1px 1px 5px #333333; width: 80%; max-width: 100px; "
+                                                                                class="img-fluid"
+                                                                                id="uploaded_image"></a></div>
+
+                                                                    <?php  }?>
+
+
                                                                     <!-- Modal -->
-                                                                    <div class="modal fade" id="proofModal<?= $row['order_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+                                                                    <div class="modal fade"
+                                                                        id="proofModal<?= $row['order_id'] ?>"
+                                                                        tabindex="-1" role="dialog"
+                                                                        aria-labelledby="modalTitle" aria-hidden="true">
                                                                         <div class="modal-dialog" role="document">
                                                                             <div class="modal-content">
                                                                                 <div class="modal-header">
-                                                                                    <h5 class="modal-title" id="modalTitle">Proof of Shipment</h5>
+                                                                                    <h5 class="modal-title"
+                                                                                        id="modalTitle">Proof of
+                                                                                        Shipment</h5>
                                                                                 </div>
                                                                                 <div class="modal-body text-center">
-                                                                                    <div><img src="order-proofs/<?= $row['proof_img'] ?>"
+                                                                                    <div><img
+                                                                                            src="order-proofs/<?= $row['proof_img'] ?>"
                                                                                             style="border-radius: 5px; box-shadow: 1px 1px 5px #333333; width: 100%; max-width: 800px; "
-                                                                                            class="img-fluid" id="uploaded_image"></div>
+                                                                                            class="img-fluid"
+                                                                                            id="uploaded_image"></div>
                                                                                 </div>
                                                                                 <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="button"
+                                                                                        class="btn btn-secondary"
+                                                                                        data-dismiss="modal">Close</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -556,32 +583,36 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                                                                     <!-- Modal -->
 
                                                                 </td>
-                                                                
-                                                                
+
+
 
 
                                                                 <?php if ($row['status'] == 'Delivered') { ?>
-                                                                    
-                                                                    <td>
+
+                                                                <td>
                                                                     <form method="post" action="confirm_order.php">
-                                                                        <input type="hidden" name="order_id" value="<?= $row['order_id'] ?>">
-                                                                        <button type="submit" name="confirm_button" class="btn btn-primary">Confirm</button>
+                                                                        <input type="hidden" name="order_id"
+                                                                            value="<?= $row['order_id'] ?>">
+                                                                        <button type="submit" name="confirm_button"
+                                                                            class="btn btn-primary">Confirm</button>
                                                                     </form>
-                                                                    </td>
-                                                                
-                                                                
+                                                                </td>
+
+
                                                                 <?php } else if($row['status'] == 'Accepted') {?>
-                                                                    
-                                                                    <td>
+
+                                                                <td>
                                                                     <form method="post" action="confirm_order.php">
-                                                                    <input type="hidden" name="order_id" value="<?= $row['order_id'] ?>">
-                                                                    <button type="submit" name="cancel_button" class="btn btn-danger">Cancel</button>
+                                                                        <input type="hidden" name="order_id"
+                                                                            value="<?= $row['order_id'] ?>">
+                                                                        <button type="submit" name="cancel_button"
+                                                                            class="btn btn-danger">Cancel</button>
                                                                     </form>
-                                                                    </td>
+                                                                </td>
 
                                                                 <?php }else{ ?>
-                                                                    <td></td>
-                                                               <?php  } ?>
+                                                                <td></td>
+                                                                <?php  } ?>
 
                                                                 <?php if ($_SESSION['role'] != 'user') { ?>
                                                                 <td>
@@ -653,7 +684,7 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
 
                         </div>
 
-                        
+
 
                     </div>
                 </div>
@@ -666,7 +697,7 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
     </script>
     <script type="text/javascript"></script>
 
-   <script>
+    <script>
     $(document).ready(function() {
         $.noConflict();
         $('#myTable').dataTable();
@@ -680,9 +711,9 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
         $('#tbody').html('');
         $('#modalTitle').text(items[0]['order_number']);
 
-       
+
         items.map(row => {
-            total += row.qty * row.price 
+            total += row.qty * row.price
             const html = `
 				<tr>
                    
@@ -696,169 +727,169 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
 			`;
             $('#tbody').append(html);
         });
-       
-              // Calculate shipping fee based on the weight and destination
-            let shipping_fee = 0;
-            items.forEach(row => {
-                let product_weight = row.weight;
 
-                if (product_weight >= 0 && product_weight <= 500) {
+        // Calculate shipping fee based on the weight and destination
+        let shipping_fee = 0;
+        items.forEach(row => {
+            let product_weight = row.weight;
 
-                    if (row.archipelago === "Visayas") {
-                        shipping_fee += 85;
-                    } else if (row.archipelago === "NCR") {
-                        shipping_fee += 100;
-                    }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 100;
-                    }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 105;
-                    }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 115;
-                    }
+            if (product_weight >= 0 && product_weight <= 500) {
 
-                } else if (product_weight >= 501 && product_weight <= 1000) {
+                if (row.archipelago === "Visayas") {
+                    shipping_fee += 85;
+                } else if (row.archipelago === "NCR") {
+                    shipping_fee += 100;
+                } else if (row.archipelago === "Luzon") {
+                    shipping_fee += 100;
+                } else if (row.archipelago === "Mindanao") {
+                    shipping_fee += 105;
+                } else if (row.archipelago === "ISLAND") {
+                    shipping_fee += 115;
+                }
 
-                    if (row.archipelago === "Visayas") {
-                        shipping_fee += 115;
-                    } else if (row.archipelago === "NCR") {
-                        shipping_fee += 180;
-                    }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 180;
-                    }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 175;
-                    }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 185;
-                    }
-   
-                }else if (product_weight >= 1001 && product_weight <= 3000) {
+            } else if (product_weight >= 501 && product_weight <= 1000) {
 
-                    if (row.archipelago === "Visayas") {
-                        shipping_fee += 180;
-                    } else if (row.archipelago === "NCR") {
-                        shipping_fee += 200;
-                    }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 200 ;
-                    }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 200 ;
-                    }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 210 ;
-                    }
+                if (row.archipelago === "Visayas") {
+                    shipping_fee += 115;
+                } else if (row.archipelago === "NCR") {
+                    shipping_fee += 180;
+                } else if (row.archipelago === "Luzon") {
+                    shipping_fee += 180;
+                } else if (row.archipelago === "Mindanao") {
+                    shipping_fee += 175;
+                } else if (row.archipelago === "ISLAND") {
+                    shipping_fee += 185;
+                }
 
-                }else if (product_weight >= 3001 && product_weight <= 4000) {
+            } else if (product_weight >= 1001 && product_weight <= 3000) {
 
-                    if (row.archipelago === "Visayas") {
-                        shipping_fee += 270 ;
-                    } else if (row.archipelago === "NCR") {
-                        shipping_fee += 300;
-                    }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 300 ;
-                    }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 290 ;
-                    }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 300 ;
-                    }
+                if (row.archipelago === "Visayas") {
+                    shipping_fee += 180;
+                } else if (row.archipelago === "NCR") {
+                    shipping_fee += 200;
+                } else if (row.archipelago === "Luzon") {
+                    shipping_fee += 200;
+                } else if (row.archipelago === "Mindanao") {
+                    shipping_fee += 200;
+                } else if (row.archipelago === "ISLAND") {
+                    shipping_fee += 210;
+                }
 
-                }else if (product_weight >= 4001 && product_weight <= 5000) {
+            } else if (product_weight >= 3001 && product_weight <= 4000) {
 
-                    if (row.archipelago === "Visayas") {
-                        shipping_fee += 360 ;
-                    } else if (row.archipelago === "NCR") {
-                        shipping_fee += 400 ;
-                    }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 400 ;
-                    }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 380 ;
-                    }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 390;
-                    }
+                if (row.archipelago === "Visayas") {
+                    shipping_fee += 270;
+                } else if (row.archipelago === "NCR") {
+                    shipping_fee += 300;
+                } else if (row.archipelago === "Luzon") {
+                    shipping_fee += 300;
+                } else if (row.archipelago === "Mindanao") {
+                    shipping_fee += 290;
+                } else if (row.archipelago === "ISLAND") {
+                    shipping_fee += 300;
+                }
 
-                }else if (product_weight >= 5001 && product_weight <= 6000) {
+            } else if (product_weight >= 4001 && product_weight <= 5000) {
 
-                    if (row.archipelago === "Visayas") {
-                        shipping_fee += 455 ;
-                    } else if (row.archipelago === "NCR") {
-                        shipping_fee += 500 
-                    }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 500 ;
-                    }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 475 ;
-                    }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 485 ;
-                    }
+                if (row.archipelago === "Visayas") {
+                    shipping_fee += 360;
+                } else if (row.archipelago === "NCR") {
+                    shipping_fee += 400;
+                } else if (row.archipelago === "Luzon") {
+                    shipping_fee += 400;
+                } else if (row.archipelago === "Mindanao") {
+                    shipping_fee += 380;
+                } else if (row.archipelago === "ISLAND") {
+                    shipping_fee += 390;
+                }
 
-                }else if (product_weight >= 6001 && product_weight <= 7000) {
+            } else if (product_weight >= 5001 && product_weight <= 6000) {
 
-                    if (row.archipelago === "Visayas") {
-                        shipping_fee += 565 ;
-                    } else if (row.archipelago === "NCR") {
-                        shipping_fee += 630 ;
-                    }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 635 ;
-                    }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 595 ;
-                    }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 830;
-                    }
+                if (row.archipelago === "Visayas") {
+                    shipping_fee += 455;
+                } else if (row.archipelago === "NCR") {
+                    shipping_fee += 500
+                } else if (row.archipelago === "Luzon") {
+                    shipping_fee += 500;
+                } else if (row.archipelago === "Mindanao") {
+                    shipping_fee += 475;
+                } else if (row.archipelago === "ISLAND") {
+                    shipping_fee += 485;
+                }
 
-                }else if (product_weight >= 7001 && product_weight <= 8000) {
+            } else if (product_weight >= 6001 && product_weight <= 7000) {
 
-                    if (row.archipelago === "Visayas") {
-                        shipping_fee += 605 ;
-                    } else if (row.archipelago === "NCR") {
-                        shipping_fee += 670 ;
-                    }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 675 ;
-                    }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 535 ;
-                    }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 890 ;
-                    }
+                if (row.archipelago === "Visayas") {
+                    shipping_fee += 565;
+                } else if (row.archipelago === "NCR") {
+                    shipping_fee += 630;
+                } else if (row.archipelago === "Luzon") {
+                    shipping_fee += 635;
+                } else if (row.archipelago === "Mindanao") {
+                    shipping_fee += 595;
+                } else if (row.archipelago === "ISLAND") {
+                    shipping_fee += 830;
+                }
 
-                }else if (product_weight >= 8001 && product_weight <= 9000) {
+            } else if (product_weight >= 7001 && product_weight <= 8000) {
 
-                    if (row.archipelago === "Visayas") {
-                        shipping_fee += 705 ;
-                    } else if (row.archipelago === "NCR") {
-                        shipping_fee += 782 ;
-                    }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 787 ;
-                    }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 751 ;
-                    }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 1020 ;
-                    }
+                if (row.archipelago === "Visayas") {
+                    shipping_fee += 605;
+                } else if (row.archipelago === "NCR") {
+                    shipping_fee += 670;
+                } else if (row.archipelago === "Luzon") {
+                    shipping_fee += 675;
+                } else if (row.archipelago === "Mindanao") {
+                    shipping_fee += 535;
+                } else if (row.archipelago === "ISLAND") {
+                    shipping_fee += 890;
+                }
 
-                }else if (product_weight >= 9001 && product_weight <= 10000) {
+            } else if (product_weight >= 8001 && product_weight <= 9000) {
 
-                    if (row.archipelago === "Visayas") {
-                        shipping_fee += 805 ;
-                    } else if (row.archipelago === "NCR") {
-                        shipping_fee += 894 ;
-                    }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 899;
-                    }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 867 ;
-                    }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 1150 ;
-                    }
-                }else{
-                    
-                    if (row.archipelago === "Visayas") {
-                        shipping_fee += 805 ;
-                    } else if (row.archipelago === "NCR") {
-                        shipping_fee += 894 ;
-                    }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 899;
-                    }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 867 ;
-                    }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 1150 ;
-                    }
-                }         
+                if (row.archipelago === "Visayas") {
+                    shipping_fee += 705;
+                } else if (row.archipelago === "NCR") {
+                    shipping_fee += 782;
+                } else if (row.archipelago === "Luzon") {
+                    shipping_fee += 787;
+                } else if (row.archipelago === "Mindanao") {
+                    shipping_fee += 751;
+                } else if (row.archipelago === "ISLAND") {
+                    shipping_fee += 1020;
+                }
 
-            });
+            } else if (product_weight >= 9001 && product_weight <= 10000) {
 
-            const shipping_row = `
+                if (row.archipelago === "Visayas") {
+                    shipping_fee += 805;
+                } else if (row.archipelago === "NCR") {
+                    shipping_fee += 894;
+                } else if (row.archipelago === "Luzon") {
+                    shipping_fee += 899;
+                } else if (row.archipelago === "Mindanao") {
+                    shipping_fee += 867;
+                } else if (row.archipelago === "ISLAND") {
+                    shipping_fee += 1150;
+                }
+            } else {
+
+                if (row.archipelago === "Visayas") {
+                    shipping_fee += 805;
+                } else if (row.archipelago === "NCR") {
+                    shipping_fee += 894;
+                } else if (row.archipelago === "Luzon") {
+                    shipping_fee += 899;
+                } else if (row.archipelago === "Mindanao") {
+                    shipping_fee += 867;
+                } else if (row.archipelago === "ISLAND") {
+                    shipping_fee += 1150;
+                }
+            }
+
+        });
+
+        const shipping_row = `
 				<tr>
                    
 					<td>Shipping Fee</td>
@@ -870,7 +901,7 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
 				</tr>
 			`;
 
-            const total_row = `
+        const total_row = `
 				<tr>
                    
 					<td>Total</td>
@@ -890,7 +921,7 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
     $('[data-dismiss="modal"]').click(function() {
         $('#orderModal').modal('hide');
     });
-    </script> 
+    </script>
 
 </body>
 

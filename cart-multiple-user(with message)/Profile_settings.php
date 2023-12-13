@@ -249,7 +249,8 @@ if ($res = mysqli_fetch_array($findresult)) {
                                 </a>
 
                                 <a href="Profile_reviews.php" class="nav-item nav-link has-icon nav-link-faded">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="feather feather-settings mr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        class="feather feather-settings mr-2">
                                         <path fill="currentColor"
                                             d="M6 14h3.05l5-5q.225-.225.338-.513t.112-.562q0-.275-.125-.537T14.05 6.9l-.9-.95q-.225-.225-.5-.337t-.575-.113q-.275 0-.562.113T11 5.95l-5 5zm7-6.075L12.075 7zM7.5 12.5v-.95l2.525-2.525l.5.45l.45.5L8.45 12.5zm3.025-3.025l.45.5l-.95-.95zm.65 4.525H18v-2h-4.825zM2 22V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18H6zm3.15-6H20V4H4v13.125zM4 16V4z" />
                                     </svg>Reviews
@@ -282,7 +283,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                             <ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
                                 <li class="nav-item">
                                     <a href="Profile_settings.php" class="nav-link has-icon active"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            xmlns="http://www.w3.org/2000/svg" width="19" height="19"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
                                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -291,7 +292,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                                 </li>
                                 <li class="nav-item">
                                     <a href="Profile_purchases.php" class="nav-link has-icon"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            xmlns="http://www.w3.org/2000/svg" width="19" height="19"
                                             viewBox="0 0 24 24" fill="currentColor" stroke-linejoin="round"
                                             class="feather feather-settings">
                                             <path
@@ -301,7 +302,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                                 </li>
                                 <li class="nav-item">
                                     <a href="Profile_messages.php" class="nav-link has-icon"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            xmlns="http://www.w3.org/2000/svg" width="19" height="19"
                                             viewBox="0 0 24 24" fill="currentColor" stroke-linejoin="round"
                                             class="feather feather-bell">
                                             <path
@@ -309,9 +310,20 @@ if ($res = mysqli_fetch_array($findresult)) {
                                             </path>
                                         </svg></a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a href="Profile_reviews.php" class="nav-item nav-link has-icon nav-link-faded">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19"
+                                            viewBox="0 0 24 24" class="feather feather-settings">
+                                            <path fill="currentColor"
+                                                d="M6 14h3.05l5-5q.225-.225.338-.513t.112-.562q0-.275-.125-.537T14.05 6.9l-.9-.95q-.225-.225-.5-.337t-.575-.113q-.275 0-.562.113T11 5.95l-5 5zm7-6.075L12.075 7zM7.5 12.5v-.95l2.525-2.525l.5.45l.45.5L8.45 12.5zm3.025-3.025l.45.5l-.95-.95zm.65 4.525H18v-2h-4.825zM2 22V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18H6zm3.15-6H20V4H4v13.125zM4 16V4z" />
+                                        </svg>
+                                    </a>
+                                </li>
+
                                 <li class="nav-item">
                                     <a href="Profile_notifications.php" class="nav-link has-icon"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            xmlns="http://www.w3.org/2000/svg" width="19" height="19"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
                                             <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -321,7 +333,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                                 </li>
                                 <li class="nav-item">
                                     <a href="Profile_changepass.php" class="nav-link has-icon"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            xmlns="http://www.w3.org/2000/svg" width="19" height="19"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
                                             class="feather feather-shield">

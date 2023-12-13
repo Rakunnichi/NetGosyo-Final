@@ -68,9 +68,15 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
     <title>Profile settings - Bootdey.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-Bq5Uf6IFxDcw3pAglz9e9YVCsttKlcKbxG3kvmjhpj1lZb1L+pu7lMpJxXt0UayHfTVy7vmC1iLHl1AOT0YRGw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha512-PA98OcL5u22YWN7xZYi7uVeYvPbb+DFlUQ/Z1h75MD+ofLzQO9g8JLwy3+LlFnyo2mZLgvqAcr9qgJZ7W2s+Ng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-7JM11oDPXg1/kFHndUdcJQGvsz++bO14/psW4Kc6tBMkWem9a3jZ7VZjtw7DL++G4DbKtVK8T86JIs6Y6frY2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+        integrity="sha512-Bq5Uf6IFxDcw3pAglz9e9YVCsttKlcKbxG3kvmjhpj1lZb1L+pu7lMpJxXt0UayHfTVy7vmC1iLHl1AOT0YRGw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha512-PA98OcL5u22YWN7xZYi7uVeYvPbb+DFlUQ/Z1h75MD+ofLzQO9g8JLwy3+LlFnyo2mZLgvqAcr9qgJZ7W2s+Ng=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+        integrity="sha512-7JM11oDPXg1/kFHndUdcJQGvsz++bO14/psW4Kc6tBMkWem9a3jZ7VZjtw7DL++G4DbKtVK8T86JIs6Y6frY2w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <style type="text/css">
     body {
@@ -140,7 +146,7 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
         box-shadow: none !important;
     }
 
-    
+
     .form-title {
         color: #000000;
         font-size: 1.2rem;
@@ -209,12 +215,13 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
     #file-input::file-selector-button:hover {
         background: #000;
     }
-    .btn:hover{
-    color: #ffffff;
+
+    .btn:hover {
+        color: #ffffff;
     }
 
 
-   
+
     .dropdown {
         position: relative;
         display: inline-block;
@@ -384,13 +391,12 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
                             </a>
 
                             <a href="Profile_reviews.php" class="nav-item nav-link has-icon nav-link-faded">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="currentColor" class="feather feather-settings mr-2">
-                                        <path
-                                            d="M4 4h16v12H5.17L4 17.17V4m0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h12v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z">
-                                        </path>
-                                    </svg>Reviews
-                                </a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    class="feather feather-settings mr-2">
+                                    <path fill="currentColor"
+                                        d="M6 14h3.05l5-5q.225-.225.338-.513t.112-.562q0-.275-.125-.537T14.05 6.9l-.9-.95q-.225-.225-.5-.337t-.575-.113q-.275 0-.562.113T11 5.95l-5 5zm7-6.075L12.075 7zM7.5 12.5v-.95l2.525-2.525l.5.45l.45.5L8.45 12.5zm3.025-3.025l.45.5l-.95-.95zm.65 4.525H18v-2h-4.825zM2 22V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18H6zm3.15-6H20V4H4v13.125zM4 16V4z" />
+                                </svg>Reviews
+                            </a>
 
                             <a href="Profile_notifications.php" class="nav-item nav-link has-icon nav-link-faded">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -398,7 +404,8 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
                                     stroke-linejoin="round" class="feather feather-bell mr-2">
                                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                                     <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                                </svg>Notification<span class="badge badge-danger ml-2"><?= mysqli_num_rows($notifications) ?>
+                                </svg>Notification<span
+                                    class="badge badge-danger ml-2"><?= mysqli_num_rows($notifications) ?>
                             </a>
                             <a href="Profile_changepass.php" class="nav-item nav-link has-icon nav-link-faded">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -417,7 +424,7 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
                         <ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
                             <li class="nav-item">
                                 <a href="Profile_settings.php" class="nav-link has-icon"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="feather feather-user">
                                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -426,7 +433,7 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
                             </li>
                             <li class="nav-item">
                                 <a href="Profile_purchases.php" class="nav-link has-icon"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
                                         fill="currentColor" stroke-linejoin="round" class="feather feather-settings">
                                         <path
                                             d="M17 18a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2M1 2h3.27l.94 2H20a1 1 0 0 1 1 1c0 .17-.05.34-.12.5l-3.58 6.47c-.34.61-1 1.03-1.75 1.03H8.1l-.9 1.63l-.03.12a.25.25 0 0 0 .25.25H19v2H7a2 2 0 0 1-2-2c0-.35.09-.68.24-.96l1.36-2.45L3 4H1V2m6 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2m9-7l2.78-5H6.14l2.36 5H16Z">
@@ -435,25 +442,37 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
                             </li>
                             <li class="nav-item">
                                 <a href="Profile_messages.php" class="nav-link has-icon active"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
                                         fill="currentColor" stroke-linejoin="round" class="feather feather-bell">
                                         <path
                                             d="M4 4h16v12H5.17L4 17.17V4m0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h12v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z">
                                         </path>
                                     </svg></a>
                             </li>
+
+                            <li class="nav-item">
+                                <a href="Profile_reviews.php" class="nav-item nav-link has-icon nav-link-faded">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
+                                        class="feather feather-settings">
+                                        <path fill="currentColor"
+                                            d="M6 14h3.05l5-5q.225-.225.338-.513t.112-.562q0-.275-.125-.537T14.05 6.9l-.9-.95q-.225-.225-.5-.337t-.575-.113q-.275 0-.562.113T11 5.95l-5 5zm7-6.075L12.075 7zM7.5 12.5v-.95l2.525-2.525l.5.45l.45.5L8.45 12.5zm3.025-3.025l.45.5l-.95-.95zm.65 4.525H18v-2h-4.825zM2 22V4q0-.825.588-1.412T4 2h16q.825 0 1.413.588T22 4v12q0 .825-.587 1.413T20 18H6zm3.15-6H20V4H4v13.125zM4 16V4z" />
+                                    </svg>
+                                </a>
+                            </li>
+
                             <li class="nav-item">
                                 <a href="Profile_notifications.php" class="nav-link has-icon"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="feather feather-bell">
                                         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                                         <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                                    </svg><span class="badge badge-danger ml-1"><?= mysqli_num_rows($notifications) ?></a>
+                                    </svg><span
+                                        class="badge badge-danger ml-1"><?= mysqli_num_rows($notifications) ?></a>
                             </li>
                             <li class="nav-item">
                                 <a href="Profile_changepass.php" class="nav-link has-icon"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="feather feather-shield">
                                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -462,7 +481,7 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
                         </ul>
                     </div>
                     <div class="card-body">
-                     
+
                         <div class="tab-pane" id="messages">
                             <div class="container-fluid py-3">
                                 <div class="row">
@@ -471,57 +490,65 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="text-right" style="font-size: 30px;">Messages</h4>
                                                 <button class="btn color-orange-bg" data-toggle="modal"
-                                                    data-target="#messageModal"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="none"><path d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"/><path fill="currentColor" d="M10.5 20a1.5 1.5 0 0 0 3 0v-6.5H20a1.5 1.5 0 0 0 0-3h-6.5V4a1.5 1.5 0 0 0-3 0v6.5H4a1.5 1.5 0 0 0 0 3h6.5V20Z"/></g></svg>
+                                                    data-target="#messageModal"><svg xmlns="http://www.w3.org/2000/svg"
+                                                        width="24" height="24" viewBox="0 0 24 24">
+                                                        <g fill="none">
+                                                            <path
+                                                                d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z" />
+                                                            <path fill="currentColor"
+                                                                d="M10.5 20a1.5 1.5 0 0 0 3 0v-6.5H20a1.5 1.5 0 0 0 0-3h-6.5V4a1.5 1.5 0 0 0-3 0v6.5H4a1.5 1.5 0 0 0 0 3h6.5V20Z" />
+                                                        </g>
+                                                    </svg>
                                                 </button>
                                             </div>
 
                                             <div class="card-body px-0 pb-2 mt-2 border-top">
                                                 <div class="table-responsive p-0">
 
-                                                        <table  class="table table-striped table-hover mb-0" id="myTable">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Recepient</th>
-                                                                    <th>Subject</th>
-                                                                    <th>Message</th>
-                                                                    <th>Date</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <?php foreach ($convos as $row) { ?>
-                                                                <tr>
-                                                                    <?php if ($row['user_id'] == $user_id) { ?>
-                                                                    <td><a href="message.php?convo_id=<?= $row['convo_id'] ?>"
-                                                                            style="color:#333;text-decoration: none;"><?= $row['fullname'] ?></a>
-                                                                    </td>
+                                                    <table class="table table-striped table-hover mb-0" id="myTable">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Recepient</th>
+                                                                <th>Subject</th>
+                                                                <th>Message</th>
+                                                                <th>Date</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php foreach ($convos as $row) { ?>
+                                                            <tr>
+                                                                <?php if ($row['user_id'] == $user_id) { ?>
+                                                                <td><a href="message.php?convo_id=<?= $row['convo_id'] ?>"
+                                                                        style="color:#333;text-decoration: none;"><?= $row['fullname'] ?></a>
+                                                                </td>
 
-                                                                    <?php } else { ?>
-                                                                    <td><a href="message.php?convo_id=<?= $row['convo_id'] ?>"
-                                                                            style="color:#333;text-decoration: none;"><?= $email ?></a>
-                                                                    </td>
+                                                                <?php } else { ?>
+                                                                <td><a href="message.php?convo_id=<?= $row['convo_id'] ?>"
+                                                                        style="color:#333;text-decoration: none;"><?= $email ?></a>
+                                                                </td>
 
-                                                                    <?php } ?>
-                                                                    <td><a href="message.php?convo_id=<?= $row['convo_id'] ?>"
-                                                                            style="color:#333;text-decoration: none;"><?= $row['subject'] ?></a>
-                                                                    </td>
-
-                                                                    <td><a href="message.php?convo_id=<?= $row['convo_id'] ?>"
-                                                                            style="color:#333;text-decoration: none;"><?= $row['messages'][count($row['messages']) - 1]['message'] ?></a>
-                                                                    </td>
-
-                                                                    <td><a href="message.php?convo_id=<?= $row['convo_id'] ?>"
-                                                                            style="color:#333;text-decoration: none;"><?= $row['convo_added'] ?></a>
-                                                                    </td>
-                                                                </tr>
                                                                 <?php } ?>
+                                                                <td><a href="message.php?convo_id=<?= $row['convo_id'] ?>"
+                                                                        style="color:#333;text-decoration: none;"><?= $row['subject'] ?></a>
+                                                                </td>
 
-                                                                <?php if (!$convos) { ?>
-                                                                <tr>
-                                                                    <td class="text-center" colspan="4">No messages</td>
-                                                                </tr>
-                                                                <?php } ?>
-                                                            </tbody>
-                                                        </table>
+                                                                <td><a href="message.php?convo_id=<?= $row['convo_id'] ?>"
+                                                                        style="color:#333;text-decoration: none;"><?= $row['messages'][count($row['messages']) - 1]['message'] ?></a>
+                                                                </td>
+
+                                                                <td><a href="message.php?convo_id=<?= $row['convo_id'] ?>"
+                                                                        style="color:#333;text-decoration: none;"><?= $row['convo_added'] ?></a>
+                                                                </td>
+                                                            </tr>
+                                                            <?php } ?>
+
+                                                            <?php if (!$convos) { ?>
+                                                            <tr>
+                                                                <td class="text-center" colspan="4">No messages</td>
+                                                            </tr>
+                                                            <?php } ?>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
@@ -560,9 +587,10 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
                                                 </div> -->
 
                                                 <div class="form-group">
-                                                    <label for="recipientInput">Recipient:   </label>
+                                                    <label for="recipientInput">Recipient: </label>
                                                     <div class="dropdown">
-                                                        <input type="text" class="form-control" id="recipientInput" placeholder="Type to search" autocomplete="off">
+                                                        <input type="text" class="form-control" id="recipientInput"
+                                                            placeholder="Type to search" autocomplete="off">
                                                         <div class="dropdown-content">
                                                             <ul id="recipientList" class="recipient-list"></ul>
                                                         </div>
@@ -581,7 +609,8 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Attachment (Optional)</label><br>
-                                                    <input type="file" name="attachment" accept="image/*,video/*" id="file-input">
+                                                    <input type="file" name="attachment" accept="image/*,video/*"
+                                                        id="file-input">
                                                 </div>
                                             </form>
                                         </div>
@@ -614,10 +643,10 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
     </script>
 
 
-<script>
-    $(document).ready(function () {
+    <script>
+    $(document).ready(function() {
         // Event handler for input changes
-        $('#recipientInput').on('input', function () {
+        $('#recipientInput').on('input', function() {
             var input = $(this).val().toLowerCase();
             var recipientList = $('#recipientList');
             recipientList.empty();
@@ -627,37 +656,41 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
                 url: 'get_users.php',
                 method: 'POST',
                 dataType: 'json',
-                data: { search: input },
-                success: function (users) {
+                data: {
+                    search: input
+                },
+                success: function(users) {
                     // Update the dynamic list
-                    users.forEach(function (user) {
-                        var listItem = $('<li data-id="' + user.id + '">' + user.fullname + '</li>');
-                        listItem.on('click', function () {
+                    users.forEach(function(user) {
+                        var listItem = $('<li data-id="' + user.id + '">' + user
+                            .fullname + '</li>');
+                        listItem.on('click', function() {
                             $('#recipientInput').val(user.fullname);
                             $('#selectedRecipient').val(user.id);
-                            recipientList.empty(); // Clear the list after selection
+                            recipientList
+                        .empty(); // Clear the list after selection
                         });
                         recipientList.append(listItem);
                     });
                 },
-                error: function (error) {
+                error: function(error) {
                     console.error('Error fetching user data:', error);
                 }
             });
         });
 
         // Show/hide dropdown based on focus
-        $('#recipientInput').on('focus', function () {
+        $('#recipientInput').on('focus', function() {
             $('.dropdown-content').show();
         });
 
-        $(document).on('click', function (e) {
+        $(document).on('click', function(e) {
             if (!$(e.target).closest('.dropdown').length) {
                 $('.dropdown-content').hide();
             }
         });
     });
-</script>
+    </script>
 
 
     <script>
@@ -695,7 +728,7 @@ while ($convo_row = mysqli_fetch_assoc($convo_query)) {
         $('#orderModal').modal('hide');
     });
     </script>
-    
+
 </body>
 
 </html>
