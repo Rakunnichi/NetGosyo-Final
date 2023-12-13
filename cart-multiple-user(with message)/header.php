@@ -68,9 +68,26 @@ if (isset($_POST['add_to_cart'])) {
 if (isset($_POST['update_cart'])) {
   $update_quantity = $_POST['cart_quantity'];
   $update_id = $_POST['cart_id'];
-  mysqli_query($conn, "UPDATE `cart` SET quantity = '$update_quantity' WHERE id= '$update_id'") or die('query failed');
+//   mysqli_query($conn, "UPDATE `cart` SET quantity = '$update_quantity' WHERE id= '$update_id'") or die('query failed');
+ 
+   
+    // Retrieve the current weight and quantity
+    $query = mysqli_query($conn, "SELECT weight, quantity FROM `cart` WHERE id = '$update_id'");
+    $row = mysqli_fetch_assoc($query);
+    $current_weight = $row['weight'];
+    $current_quantity = $row['quantity'];
+
+    // Update quantity and weight based on the new quantity
+    mysqli_query($conn, "
+        UPDATE `cart`
+        SET 
+            quantity = '$update_quantity',
+            weight = '$current_weight' * ('$update_quantity' / '$current_quantity')
+        WHERE id= '$update_id'
+    ") or die('query failed');
   
 }
+
 
 
 if (isset($_GET['delete_all'])) {

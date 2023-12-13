@@ -54,6 +54,7 @@ $product = mysqli_query($conn, $sql2);
 
 if (mysqli_num_rows($product) > 0) {
     $row = mysqli_fetch_assoc($product);
+    $sellerthis_id = $row["id"];
     $seller_shop = $row["shopname"];
   }
 
@@ -98,7 +99,7 @@ while ($row = $result->fetch_assoc()) :
                             <input type="hidden" name="product_name" value="<?= $row['name'] ?>">
                             <input type="hidden" name="product_price" value="<?= $row['price'] ?>">
                             <input type="hidden" name="product_image" value="<?= $row['image'] ?>">
-                            <input type="hidden" name="product_weight" value="<?= $row['weight'] ?>">
+                            <input type="hidden" name="product_weight" value="<?= $row['prodweight'] ?>">
                             <input type="hidden" name="product_archipelago" value="<?= $archipelago; ?>">
                             <input type="hidden" name="product_quantity" value="1">
                            
@@ -167,7 +168,7 @@ while ($row = $result->fetch_assoc()) :
                     <small><i class="fas fa-calendar color-primary mr-1" style="width:16px"></i> Delivery by : 2 -
                         3 Days</small>
                     <small><i class="fas fa-check color-primary mr-1" style="width:16px; text-decoration:"></i> Sold by 
-                           <b><?= $seller_shop ?></b></small>
+                           <b><a href="<?php printf('%s?id=%s', 'view-shop-details.php',  $sellerthis_id); ?>"><?= $seller_shop ?></a></b></small>
                     <small><i class="fas fa-map-marker-alt color-primary mr-1" style="width:16px"></i> Deliver to
                         Customer - <b><?= $name ?> </b></small>
                 </div>
@@ -275,9 +276,9 @@ endwhile;
                 
                 
                         // Display reviews using Bootstrap and Font Awesome for star ratings
-                        echo "<div class='reviews'>";
+                        echo "<div class='reviews pb-3'>";
                         if ($totalReviews > 0) {
-                            echo "<h3>Comments:</h3>";
+                            echo "<h5>Comments:</h5>";
                             $reviewsResult->data_seek(0);  // Reset the result pointer
 
                             
@@ -314,39 +315,39 @@ endwhile;
                         echo "</div>";
                             
                         
-                                // Display form for rating and reviewing the product using Bootstrap classes
-                            echo "<form method='post'>";
+                            //     // Display form for rating and reviewing the product using Bootstrap classes
+                            // echo "<form method='post'>";
 
-                            echo "<input type='hidden' name='productId' value='$id'>";
-                            echo "<input type='hidden' name='user_rater' value='$name'>";
-                            echo "<div class='form-group'>";
-                            echo "<br>";
-                            echo "<h3>Leave a Review:</h3>";
-                            echo "<label for='rating'><b>Rating:</b></label>";
-                            echo "<select class='form-control' name='rating' style='width:auto;'>";
-                            echo "<option value='1'>1</option>";
-                            echo "<option value='2'>2</option>";
-                            echo "<option value='3'>3</option>";
-                            echo "<option value='4'>4</option>";
-                            echo "<option value='5'>5</option>";
-                            echo "</select>";
-                            echo "</div>";
+                            // echo "<input type='hidden' name='productId' value='$id'>";
+                            // echo "<input type='hidden' name='user_rater' value='$name'>";
+                            // echo "<div class='form-group'>";
+                            // echo "<br>";
+                            // echo "<h3>Leave a Review:</h3>";
+                            // echo "<label for='rating'><b>Rating:</b></label>";
+                            // echo "<select class='form-control' name='rating' style='width:auto;'>";
+                            // echo "<option value='1'>1</option>";
+                            // echo "<option value='2'>2</option>";
+                            // echo "<option value='3'>3</option>";
+                            // echo "<option value='4'>4</option>";
+                            // echo "<option value='5'>5</option>";
+                            // echo "</select>";
+                            // echo "</div>";
             
                             
-                            echo "<div class='form-group'>";
-                            echo "<label for='comment'><b>Comment:</b></label>";
-                            echo "<textarea class='form-control' name='comment' ></textarea>";
-                            echo "</div>";
+                            // echo "<div class='form-group'>";
+                            // echo "<label for='comment'><b>Comment:</b></label>";
+                            // echo "<textarea class='form-control' name='comment' ></textarea>";
+                            // echo "</div>";
                             
 
                            
-                            if($user_id == 3){
-                                echo "<button type='submit' name='review_submit' class='btn color-orange-bg' disabled>Submit Review</button>";
-                            }else{
-                                echo "<button type='submit' name='review_submit' class='btn color-orange-bg'>Submit Review</button>";
-                            }
+                            // if($user_id == 3){
+                            //     echo "<button type='submit' name='review_submit' class='btn color-orange-bg' disabled>Submit Review</button>";
+                            // }else{
+                            //     echo "<button type='submit' name='review_submit' class='btn color-orange-bg'>Submit Review</button>";
+                            // }
                             
-                            echo "</form>";
+                            // echo "</form>";
 
                             
 

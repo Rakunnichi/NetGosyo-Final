@@ -14,7 +14,7 @@
     $price = $row["price"];
     $image =$row["image"];
     $itembrand = $row["item_brand"];
-    $weight = $row["weight"];
+    $weight = $row["prodweight"];
     $quantity = $row["quantity"];
     $prod_desc = $row["description"];
 
@@ -52,7 +52,7 @@ if(isset($_POST['update-submit'])) {
             // Move the uploaded file to the destination directory
             if(move_uploaded_file($file, $folder . $new_image_name)) {
                 // Update the image field in the database only if a new image is provided
-                $sql = "UPDATE products SET name='$name', price='$price', image='$new_file_name', item_brand='$itembrand', quantity='$quantity', description='$proddesc', weight='$weight' WHERE id=$id";
+                $sql = "UPDATE products SET name='$name', price='$price', image='$new_file_name', item_brand='$itembrand', quantity='$quantity', description='$proddesc', prodweight='$weight' WHERE id=$id";
             } else {
                 // Handle file upload failure
                 $updateprodmessage[] = "Failed to upload the image.";
@@ -63,7 +63,7 @@ if(isset($_POST['update-submit'])) {
         }
     } else {
         // If no new image is provided, update other fields excluding the image
-        $sql = "UPDATE products SET name='$name', price='$price', item_brand='$itembrand', quantity='$quantity', description='$proddesc', weight='$weight' WHERE id=$id";
+        $sql = "UPDATE products SET name='$name', price='$price', item_brand='$itembrand', quantity='$quantity', description='$proddesc', prodweight='$weight' WHERE id=$id";
     }
 
     // Execute the SQL query
@@ -220,22 +220,11 @@ if(isset($_POST['update-submit'])) {
 
                                     <div class="col-md-3">
                                         <div class="input-group">
-                                            <label><b>Update Weight:</b></label>
+                                            <label><b>Update Weight (Grams):</b></label>
                                         </div>
                                         <div class="input-group input-group-outline my-3">
-                                        <select class="form-control" name="prodweight" id="prodweight">
-                                            <?php
-                                            $weightOptions = array(
-                                                "0g-500g", "501g-1kg", "1.01kg-3kg", "3.01kg-4kg", "4.01-5kgs",
-                                                "5.01kg-6kg", "6.01kg-7kg", "7.01kg-8kg", "8.01kg-9kg", "9.01kg-10kg"
-                                            );
-
-                                            foreach ($weightOptions as $option) {
-                                                $selected = ($option == $weight) ? 'selected' : '';
-                                                echo "<option value=\"$option\" $selected>$option</option>";
-                                            }
-                                            ?>
-                                        </select>
+                                        <input type="number" name="prodweight"  value="<?php echo $weight; ?>" placeholder="Product Weight(Grams)"
+                                                class="form-control" required>
                                         </div>
                                     </div>
 

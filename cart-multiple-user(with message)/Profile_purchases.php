@@ -325,6 +325,16 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
                                     </path>
                                 </svg>Messages
                             </a>
+
+                            <a href="Profile_reviews.php" class="nav-item nav-link has-icon nav-link-faded">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="currentColor" class="feather feather-settings mr-2">
+                                        <path
+                                            d="M4 4h16v12H5.17L4 17.17V4m0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h12v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z">
+                                        </path>
+                                    </svg>Reviews
+                            </a>
+
                             <a href="Profile_notifications.php" class="nav-item nav-link has-icon nav-link-faded">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -691,144 +701,158 @@ while ($order_row = mysqli_fetch_assoc($orders_query)) {
             let shipping_fee = 0;
             items.forEach(row => {
                 let product_weight = row.weight;
-                if (product_weight === "0g-500g") {
+
+                if (product_weight >= 0 && product_weight <= 500) {
 
                     if (row.archipelago === "Visayas") {
-                        shipping_fee += 85 * row.qty;
+                        shipping_fee += 85;
                     } else if (row.archipelago === "NCR") {
-                        shipping_fee += 100 * row.qty;
+                        shipping_fee += 100;
                     }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 100 * row.qty;
+                        shipping_fee += 100;
                     }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 105 * row.qty;
+                        shipping_fee += 105;
                     }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 115 * row.qty;
+                        shipping_fee += 115;
                     }
 
-                } else if (product_weight === "501g-1kg") {
+                } else if (product_weight >= 501 && product_weight <= 1000) {
 
                     if (row.archipelago === "Visayas") {
-                        shipping_fee += 115 * row.qty;
+                        shipping_fee += 115;
                     } else if (row.archipelago === "NCR") {
-                        shipping_fee += 180 * row.qty;
+                        shipping_fee += 180;
                     }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 180 * row.qty;
+                        shipping_fee += 180;
                     }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 175 * row.qty;
+                        shipping_fee += 175;
                     }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 185 * row.qty;
+                        shipping_fee += 185;
                     }
    
-                }else if (product_weight === "1.01kg-3kg") {
+                }else if (product_weight >= 1001 && product_weight <= 3000) {
 
                     if (row.archipelago === "Visayas") {
-                        shipping_fee += 180 * row.qty;
+                        shipping_fee += 180;
                     } else if (row.archipelago === "NCR") {
-                        shipping_fee += 200 * row.qty;
+                        shipping_fee += 200;
                     }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 200 * row.qty;
+                        shipping_fee += 200 ;
                     }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 200 * row.qty;
+                        shipping_fee += 200 ;
                     }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 210 * row.qty;
+                        shipping_fee += 210 ;
                     }
 
-                }else if (product_weight === "3.01kg-4kg") {
+                }else if (product_weight >= 3001 && product_weight <= 4000) {
 
                     if (row.archipelago === "Visayas") {
-                        shipping_fee += 270 * row.qty;
+                        shipping_fee += 270 ;
                     } else if (row.archipelago === "NCR") {
-                        shipping_fee += 300 * row.qty;
+                        shipping_fee += 300;
                     }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 300 * row.qty;
+                        shipping_fee += 300 ;
                     }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 290 * row.qty;
+                        shipping_fee += 290 ;
                     }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 300 * row.qty;
+                        shipping_fee += 300 ;
                     }
 
-                }else if (product_weight === "4.01-5kgs") {
+                }else if (product_weight >= 4001 && product_weight <= 5000) {
 
                     if (row.archipelago === "Visayas") {
-                        shipping_fee += 360 * row.qty;
+                        shipping_fee += 360 ;
                     } else if (row.archipelago === "NCR") {
-                        shipping_fee += 400 * row.qty;
+                        shipping_fee += 400 ;
                     }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 400 * row.qty;
+                        shipping_fee += 400 ;
                     }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 380 * row.qty;
+                        shipping_fee += 380 ;
                     }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 390 * row.qty;
+                        shipping_fee += 390;
                     }
 
-                }else if (product_weight === "5.01kg-6kg") {
+                }else if (product_weight >= 5001 && product_weight <= 6000) {
 
                     if (row.archipelago === "Visayas") {
-                        shipping_fee += 455 * row.qty;
+                        shipping_fee += 455 ;
                     } else if (row.archipelago === "NCR") {
-                        shipping_fee += 500 * row.qty;
+                        shipping_fee += 500 
                     }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 500 * row.qty;
+                        shipping_fee += 500 ;
                     }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 475 * row.qty;
+                        shipping_fee += 475 ;
                     }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 485 * row.qty;
+                        shipping_fee += 485 ;
                     }
 
-                }else if (product_weight === "6.01kg-7kg") {
+                }else if (product_weight >= 6001 && product_weight <= 7000) {
 
                     if (row.archipelago === "Visayas") {
-                        shipping_fee += 565 * row.qty;
+                        shipping_fee += 565 ;
                     } else if (row.archipelago === "NCR") {
-                        shipping_fee += 630 * row.qty;
+                        shipping_fee += 630 ;
                     }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 635 * row.qty;
+                        shipping_fee += 635 ;
                     }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 595 * row.qty;
+                        shipping_fee += 595 ;
                     }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 830 * row.qty;
+                        shipping_fee += 830;
                     }
 
-                }else if (product_weight === "7.01kg-8kg") {
+                }else if (product_weight >= 7001 && product_weight <= 8000) {
 
                     if (row.archipelago === "Visayas") {
-                        shipping_fee += 605 * row.qty;
+                        shipping_fee += 605 ;
                     } else if (row.archipelago === "NCR") {
-                        shipping_fee += 670 * row.qty;
+                        shipping_fee += 670 ;
                     }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 675 * row.qty;
+                        shipping_fee += 675 ;
                     }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 535 * row.qty;
+                        shipping_fee += 535 ;
                     }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 890 * row.qty;
+                        shipping_fee += 890 ;
                     }
 
-                }else if (product_weight === "8.01kg-9kg") {
+                }else if (product_weight >= 8001 && product_weight <= 9000) {
 
                     if (row.archipelago === "Visayas") {
-                        shipping_fee += 705 * row.qty;
+                        shipping_fee += 705 ;
                     } else if (row.archipelago === "NCR") {
-                        shipping_fee += 782 * row.qty;
+                        shipping_fee += 782 ;
                     }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 787 * row.qty;
+                        shipping_fee += 787 ;
                     }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 751 * row.qty;
+                        shipping_fee += 751 ;
                     }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 1020 * row.qty;
+                        shipping_fee += 1020 ;
                     }
 
-                }else if (product_weight === "9.01kg-10kg") {
+                }else if (product_weight >= 9001 && product_weight <= 10000) {
 
                     if (row.archipelago === "Visayas") {
-                        shipping_fee += 805 * row.qty;
+                        shipping_fee += 805 ;
                     } else if (row.archipelago === "NCR") {
-                        shipping_fee += 894 * row.qty;
+                        shipping_fee += 894 ;
                     }else if (row.archipelago === "Luzon") {
-                        shipping_fee += 899 * row.qty;
+                        shipping_fee += 899;
                     }else if (row.archipelago === "Mindanao") {
-                        shipping_fee += 867 * row.qty;
+                        shipping_fee += 867 ;
                     }else if (row.archipelago === "ISLAND") {
-                        shipping_fee += 1150 * row.qty;
+                        shipping_fee += 1150 ;
+                    }
+                }else{
+                    
+                    if (row.archipelago === "Visayas") {
+                        shipping_fee += 805 ;
+                    } else if (row.archipelago === "NCR") {
+                        shipping_fee += 894 ;
+                    }else if (row.archipelago === "Luzon") {
+                        shipping_fee += 899;
+                    }else if (row.archipelago === "Mindanao") {
+                        shipping_fee += 867 ;
+                    }else if (row.archipelago === "ISLAND") {
+                        shipping_fee += 1150 ;
                     }
                 }         
 
