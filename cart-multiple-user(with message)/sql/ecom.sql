@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 10, 2023 at 11:14 AM
+-- Generation Time: Dec 13, 2023 at 07:27 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -71,16 +71,19 @@ CREATE TABLE `items` (
   `qty` int(11) NOT NULL,
   `size` varchar(250) NOT NULL,
   `weight` varchar(250) NOT NULL,
-  `archipelago` varchar(250) NOT NULL
+  `archipelago` varchar(250) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `items`
 --
 
-INSERT INTO `items` (`item_id`, `order_id`, `user_id`, `product_id`, `seller_id`, `qty`, `size`, `weight`, `archipelago`) VALUES
-(116, 110, 45, 36, 8, 1, 'none', '501g-1kg', 'Visayas'),
-(117, 110, 45, 4, 8, 1, 'SMALL', '0g-500g', 'Visayas');
+INSERT INTO `items` (`item_id`, `order_id`, `user_id`, `product_id`, `seller_id`, `qty`, `size`, `weight`, `archipelago`, `status`) VALUES
+(120, 113, 45, 36, 8, 2, 'none', '400', 'Visayas', 0),
+(121, 114, 45, 1, 8, 1, 'none', '211', 'Visayas', 0),
+(122, 115, 45, 8, 7, 1, 'none', '99', 'Visayas', 1),
+(123, 116, 45, 8, 7, 1, 'none', '99', 'Visayas', 1);
 
 -- --------------------------------------------------------
 
@@ -144,7 +147,13 @@ INSERT INTO `notifications` (`notification_id`, `user_id`, `notification`, `noti
 (225, 8, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-10 12:42:10', '2023-12-10 12:42:10'),
 (226, 8, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-10 17:19:06', '2023-12-10 17:19:06'),
 (227, 8, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-10 17:19:06', '2023-12-10 17:19:06'),
-(228, 45, 'The seller accepted your order. Please refer to your purchases page for more Information!', '2023-12-10 17:48:40', '2023-12-10 17:48:40');
+(228, 45, 'The seller accepted your order. Please refer to your purchases page for more Information!', '2023-12-10 17:48:40', '2023-12-10 17:48:40'),
+(229, 7, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-12 23:03:38', '2023-12-12 23:03:38'),
+(230, 8, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-12 23:49:55', '2023-12-12 23:49:55'),
+(231, 8, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-12 23:52:40', '2023-12-12 23:52:40'),
+(232, 8, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-13 12:17:27', '2023-12-13 12:17:27'),
+(233, 7, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-13 12:17:27', '2023-12-13 12:17:27'),
+(234, 7, 'A buyer placed an order. Go to the orders page for more information.', '2023-12-13 13:57:27', '2023-12-13 13:57:27');
 
 -- --------------------------------------------------------
 
@@ -175,7 +184,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `order_number`, `name`, `contact`, `address`, `city`, `province`, `zip`, `pmode`, `status`, `proof_img`, `order_added`, `order_updated`, `seller_id`) VALUES
-(110, 45, 'ECNC17021999468', 'Earl Cartney N. Centino', '09682601128', 'San Jose, Rainbow Village', 'Tacloban City', 'Leyte', '6500', 'Cash on Delivery', 'Received', '', '2023-12-10 17:19:06', '2023-12-10 17:50:02', 8);
+(113, 45, 'ECNC17023963608', 'Earl Cartney N. Centino', '09682601128', 'San Jose, Rainbow Village', 'Tacloban City', 'Leyte', '6500', 'Cash on Delivery', 'Pending', '', '2023-12-12 23:52:40', NULL, 8),
+(114, 45, 'ECNC17024410478', 'Earl Cartney N. Centino', '09682601128', 'San Jose, Rainbow Village', 'Tacloban City', 'Leyte', '6500', 'Cash on Delivery', 'Pending', '', '2023-12-13 12:17:27', NULL, 8),
+(115, 45, 'ECNC17024410477', 'Earl Cartney N. Centino', '09682601128', 'San Jose, Rainbow Village', 'Tacloban City', 'Leyte', '6500', 'Cash on Delivery', 'Pending', '', '2023-12-13 12:17:27', NULL, 7),
+(116, 45, 'ECNC17024470477', 'Earl Cartney N. Centino', '09682601128', 'San Jose, Rainbow Village', 'Tacloban City', 'Leyte', '6500', 'Cash on Delivery', 'Pending', '', '2023-12-13 13:57:27', NULL, 7);
 
 -- --------------------------------------------------------
 
@@ -213,7 +225,7 @@ CREATE TABLE `products` (
   `quantity` int(100) NOT NULL,
   `description` varchar(5000) NOT NULL,
   `sales` int(100) NOT NULL,
-  `weight` varchar(250) NOT NULL,
+  `prodweight` varchar(250) NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -221,24 +233,24 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `user_id`, `name`, `price`, `image`, `item_brand`, `quantity`, `description`, `sales`, `weight`, `date_added`) VALUES
-(1, 8, 'Banig Bag - Rounded', '500', '1.png', 'Women-Bag', 20, 'Handwoven banig bags are one of the most popular fashion pieces from the Philippines and for a good reason. These native straw bags made from tikog, pandan, and straw leaves have transitioned from being just a Filipino fashion staple into a world-renowned style accent that gives that rich personality to any ensemble.                                                                                                                                                                                                        ', 8, '501g-1kg', '2023-12-10 06:51:59'),
-(2, 8, 'Banig Bag - Rectangular', '300', '2.png', 'Women-Bag', 90, 'Handwoven banig bags are one of the most popular fashion pieces from the Philippines and for a good reason. These native straw bags made from tikog, pandan, and straw leaves have transitioned from being just a Filipino fashion staple into a world-renowned style accent that gives that rich personality to any ensemble.', 0, '501g-1kg', '2023-12-10 06:52:10'),
-(3, 8, 'Banig Bag - ZigZag', '150', '3.png', 'Women-Bag', 18, 'Handwoven banig bags are one of the most popular fashion pieces from the Philippines and for a good reason. These native straw bags made from tikog, pandan, and straw leaves have transitioned from being just a Filipino fashion staple into a world-renowned style accent that gives that rich personality to any ensemble.', 0, '501g-1kg', '2023-12-10 06:52:27'),
-(4, 8, 'I Love Tacloban Shirt', '250', '4.png', 'Men-Apparel', 13, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.', 16, '0g-500g', '2023-12-10 09:19:06'),
-(5, 39, 'Baybayin Jacket', '200', '5.png', 'Men-Apparel', 57, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.', 1, '0g-500g', '2023-12-10 06:54:35'),
-(6, 39, 'Baybayin Tanktop', '134', '6.png', 'Men-Apparel', 60, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.', 0, '0g-500g', '2023-12-10 06:54:45'),
-(7, 7, 'Leyte`s Special Binagol', '150', '7.png', 'Foods', 197, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.', 1, '501g-1kg', '2023-12-10 06:47:19'),
-(8, 7, 'Leyte`s Chocolate Moron', '45', '8.png', 'Foods', 205, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.', 6, '0g-500g', '2023-12-10 06:48:44'),
-(9, 8, 'I Love Tacloban(Cotton)', '200', 'Picture1.png', 'Men-Apparel', 16, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.                                                                                                                        ', 3, '0g-500g', '2023-12-10 06:52:50'),
-(25, 8, 'Handmade Mugs', '90', '1700633543-Picture10.png', 'Souvenirs', 40, 'Show your love for your hometown in Leyte with this handmade coffee mug.\r\n\r\nThis high quality 11oz ceramic white mug has a premium hard coat that provides crisp and vibrant color reproduction sure to last for years. Perfect for all hot & cold beverages.', 0, '1.01kg-3kg', '2023-12-10 06:53:18'),
-(26, 8, 'Banig Purse', '250', '1700633644-Picture12.png', 'Women-Bag', 56, 'Handwoven banig bags are one of the most popular fashion pieces from the Philippines and for a good reason. These native straw bags made from tikog, pandan, and straw leaves have transitioned from being just a Filipino fashion staple into a world-renowned style accent that gives that rich personality to any ensemble.', 0, '0g-500g', '2023-12-10 06:53:06'),
-(27, 8, 'Wooden Mugs', '150', '1700633845-Picture6.png', 'Souvenirs', 100, 'This wooden mug will give you a unique, close to nature drinking experience and a great souvenir item to take with you if you’re a tourist.', 0, '501g-1kg', '2023-12-10 06:53:34'),
-(28, 8, 'Minimalist Banig Bag', '300', '1700634466-Picture7.png', 'Women-Bag', 56, 'Handwoven banig bags are one of the most popular fashion pieces from the Philippines and for a good reason. These native straw bags made from tikog, pandan, and straw leaves have transitioned from being just a Filipino fashion staple into a world-renowned style accent that gives that rich personality to any ensemble.          ', 0, '1.01kg-3kg', '2023-12-10 06:53:48'),
-(29, 7, 'RAB Bahalina', '150', '1700649299-Picture11.png', 'Foods', 211, 'Habang tumatagal Lalong Sumasarap', 0, '501g-1kg', '2023-12-10 06:50:34'),
-(30, 7, 'Shamrock Utap', '50', '1700649392-Picture15.png', 'Foods', 239, 'With more than 70 years of excellent baking experience, Shamrock has become one of Cebu’s living icons in homegrown goodness. And to this day, Shamrock continues to earn its place in the taste buds of both local and foreign visitors who all delight in shamrock’s famous “Otap” and other baked specialties.', 1, '0g-500g', '2023-12-10 06:50:44'),
-(31, 7, 'Pastillas de leche ', '20', '1700649517-Picture16.png', 'Foods', 300, 'Looking for the perfect sweet treat? Try this Pastillas de Leche recipe! These Filipino candies made with sugar and milk are soft and creamy bites of heaven. Make a big batch for gift-giving or to keep on hand for anytime cravings.', 0, '0g-500g', '2023-12-10 06:50:52'),
-(36, 8, 'Samsung Galaxy ', '300', '1701783567-Iphonethis.png', 'Gadget', 492, 'asdadasdasd', 8, '501g-1kg', '2023-12-10 09:19:06');
+INSERT INTO `products` (`id`, `user_id`, `name`, `price`, `image`, `item_brand`, `quantity`, `description`, `sales`, `prodweight`, `date_added`) VALUES
+(1, 8, 'Banig Bag - Rounded', '500', '1.png', 'Women-Bag', 19, 'Handwoven banig bags are one of the most popular fashion pieces from the Philippines and for a good reason. These native straw bags made from tikog, pandan, and straw leaves have transitioned from being just a Filipino fashion staple into a world-renowned style accent that gives that rich personality to any ensemble.                                                                                                                                                                                                        ', 9, '211', '2023-12-13 04:17:27'),
+(2, 8, 'Banig Bag - Rectangular', '300', '2.png', 'Women-Bag', 90, 'Handwoven banig bags are one of the most popular fashion pieces from the Philippines and for a good reason. These native straw bags made from tikog, pandan, and straw leaves have transitioned from being just a Filipino fashion staple into a world-renowned style accent that gives that rich personality to any ensemble.', 0, '200', '2023-12-12 15:34:22'),
+(3, 8, 'Banig Bag - ZigZag', '150', '3.png', 'Women-Bag', 18, 'Handwoven banig bags are one of the most popular fashion pieces from the Philippines and for a good reason. These native straw bags made from tikog, pandan, and straw leaves have transitioned from being just a Filipino fashion staple into a world-renowned style accent that gives that rich personality to any ensemble.', 0, '190', '2023-12-12 15:34:33'),
+(4, 8, 'I Love Tacloban Shirt', '250', '4.png', 'Men-Apparel', 13, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.', 16, '170', '2023-12-12 15:32:47'),
+(5, 39, 'Baybayin Jacket', '200', '5.png', 'Men-Apparel', 57, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.', 1, '175', '2023-12-12 15:32:58'),
+(6, 39, 'Baybayin Tanktop', '134', '6.png', 'Men-Apparel', 60, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.', 0, '150', '2023-12-12 15:33:09'),
+(7, 7, 'Leyte`s Special Binagol', '150', '7.png', 'Foods', 197, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.', 1, '260', '2023-12-12 15:57:46'),
+(8, 7, 'Leyte`s Chocolate Moron', '45', '8.png', 'Foods', 203, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.', 8, '99', '2023-12-13 05:57:27'),
+(9, 8, 'I Love Tacloban(Cotton)', '200', 'Picture1.png', 'Men-Apparel', 16, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, eaque. Atque, ad soluta corporis temporibus assumenda saepe laudantium quidem. Facilis veniam rerum ipsam totam sequi at autem omnis reprehenderit voluptatibus.                                                                                                                        ', 3, '150', '2023-12-12 15:33:25'),
+(25, 8, 'Handmade Mugs', '90', '1700633543-Picture10.png', 'Souvenirs', 40, 'Show your love for your hometown in Leyte with this handmade coffee mug.\r\n\r\nThis high quality 11oz ceramic white mug has a premium hard coat that provides crisp and vibrant color reproduction sure to last for years. Perfect for all hot & cold beverages.', 0, '235', '2023-12-12 15:36:07'),
+(26, 8, 'Banig Purse', '250', '1700633644-Picture12.png', 'Women-Bag', 56, 'Handwoven banig bags are one of the most popular fashion pieces from the Philippines and for a good reason. These native straw bags made from tikog, pandan, and straw leaves have transitioned from being just a Filipino fashion staple into a world-renowned style accent that gives that rich personality to any ensemble.', 0, '100', '2023-12-12 15:36:23'),
+(27, 8, 'Wooden Mugs', '150', '1700633845-Picture6.png', 'Souvenirs', 100, 'This wooden mug will give you a unique, close to nature drinking experience and a great souvenir item to take with you if you’re a tourist.', 0, '290', '2023-12-12 15:36:37'),
+(28, 8, 'Minimalist Banig Bag', '300', '1700634466-Picture7.png', 'Women-Bag', 56, 'Handwoven banig bags are one of the most popular fashion pieces from the Philippines and for a good reason. These native straw bags made from tikog, pandan, and straw leaves have transitioned from being just a Filipino fashion staple into a world-renowned style accent that gives that rich personality to any ensemble.          ', 0, '110', '2023-12-12 15:36:47'),
+(29, 7, 'RAB Bahalina', '150', '1700649299-Picture11.png', 'Foods', 211, 'Habang tumatagal Lalong Sumasarap', 0, '180', '2023-12-12 15:37:27'),
+(30, 7, 'Shamrock Utap', '50', '1700649392-Picture15.png', 'Foods', 239, 'With more than 70 years of excellent baking experience, Shamrock has become one of Cebu’s living icons in homegrown goodness. And to this day, Shamrock continues to earn its place in the taste buds of both local and foreign visitors who all delight in shamrock’s famous “Otap” and other baked specialties.', 1, '50', '2023-12-12 15:37:38'),
+(31, 7, 'Pastillas de leche ', '20', '1700649517-Picture16.png', 'Foods', 300, 'Looking for the perfect sweet treat? Try this Pastillas de Leche recipe! These Filipino candies made with sugar and milk are soft and creamy bites of heaven. Make a big batch for gift-giving or to keep on hand for anytime cravings.', 0, '50', '2023-12-12 15:37:48'),
+(36, 8, 'Samsung Galaxy ', '300', '1701783567-Iphonethis.png', 'Gadget', 489, 'asdadasdasd', 11, '200', '2023-12-12 15:52:40');
 
 -- --------------------------------------------------------
 
@@ -260,7 +272,10 @@ CREATE TABLE `review_table` (
 
 INSERT INTO `review_table` (`review_id`, `product_id`, `user_name`, `user_rating`, `user_review`) VALUES
 (30, 1, 'Earl Cartney N. Centino', 1, 'adsada'),
-(31, 1, 'Earl Cartney N. Centino', 4, 'asasdsa');
+(31, 1, 'Earl Cartney N. Centino', 4, 'asasdsa'),
+(36, 8, 'Earl Cartney N. Centino', 4, 'tis great but bad'),
+(37, 8, 'Earl Cartney N. Centino', 3, 'this great I think'),
+(38, 8, 'Earl Cartney N. Centino', 5, 'I proclaim this as good');
 
 -- --------------------------------------------------------
 
@@ -383,7 +398,7 @@ ALTER TABLE `user_form`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=237;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
 
 --
 -- AUTO_INCREMENT for table `convo`
@@ -395,7 +410,7 @@ ALTER TABLE `convo`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -407,13 +422,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `pmethod`
@@ -425,13 +440,13 @@ ALTER TABLE `pmethod`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `review_table`
 --
 ALTER TABLE `review_table`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `user_form`
