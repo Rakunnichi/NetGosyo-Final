@@ -27,7 +27,6 @@
     $current_password = $_POST['current_password'];
     $new_password = $_POST['new_pass'];
     $confirm_password = $_POST['confirm_pass'];
-    $settingsmessage = "";
 
     if ($current_password && $new_password && $confirm_password) {
         if ($new_password != $confirm_password) {
