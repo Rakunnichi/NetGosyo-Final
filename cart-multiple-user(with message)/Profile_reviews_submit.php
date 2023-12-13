@@ -4,22 +4,39 @@ ob_start();
 include('header.php');
 include('config.php');
 
-$username = $_SESSION["user_id"] ?? '3';
-$findresult = mysqli_query($conn, "SELECT * FROM user_form WHERE id = '$user_id'");
-if ($res = mysqli_fetch_array($findresult)) {
-	$fullname = $res['fullname'];
-	$username = $res['username'];
-	$oldusername = $res['username'];
-	$email = $res['email'];
-	$phonenumber = $res['phonenumber'];
-	$address = $res['address'];
-	$dateofbirth = $res['dateofbirth'];
-	$gender = $res['gender'];
-	$image = $res['image'];
+$id =  $_GET["id"];
+$item_id =  $_GET["item_id"];
+
+if (isset($_POST['submit_review'])) {
+    // Assuming you have a database connection in $conn
+
+   
+    // $product_id = $_POST['product_id'];
+    $reviewer_name = $_POST['reviewer_name'];
+    $rating = $_POST['rating'];
+    $comment = $_POST['comment'];
+
+
+    // Insert the review into the review_table
+    $sql = "INSERT INTO review_table (product_id, user_name, user_rating, user_review)
+            VALUES ('$id', '$reviewer_name', '$rating', '$comment')";
+
+    if (mysqli_query($conn, $sql)) {
+        $sql2 = "UPDATE items SET status ='1' where item_id=$item_id";
+        $result = $conn->query($sql2);
+
+        header('location:Profile_reviews.php');
+    } else {
+        // Error in adding review
+        echo "Error: " . mysqli_error($conn);
+    }
 }
 
 
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,6 +50,16 @@ if ($res = mysqli_fetch_array($findresult)) {
     <title>Profile settings - Bootdey.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"
+        integrity="sha512-Bq5Uf6IFxDcw3pAglz9e9YVCsttKlcKbxG3kvmjhpj1lZb1L+pu7lMpJxXt0UayHfTVy7vmC1iLHl1AOT0YRGw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha512-PA98OcL5u22YWN7xZYi7uVeYvPbb+DFlUQ/Z1h75MD+ofLzQO9g8JLwy3+LlFnyo2mZLgvqAcr9qgJZ7W2s+Ng=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+        integrity="sha512-7JM11oDPXg1/kFHndUdcJQGvsz++bO14/psW4Kc6tBMkWem9a3jZ7VZjtw7DL++G4DbKtVK8T86JIs6Y6frY2w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style type="text/css">
     body {
 
@@ -100,14 +127,138 @@ if ($res = mysqli_fetch_array($findresult)) {
     .shadow-none {
         box-shadow: none !important;
     }
-    .btn:hover{
-    color: #ffffff;
+
+
+    .form-title {
+        color: #000000;
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .form-paragraph {
+        font-size: 0.7rem;
+        color: rgb(105, 105, 105);
+    }
+
+    .drop-container {
+        background-color: #fff;
+        position: relative;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px dashed rgb(171, 202, 255);
+        color: #444;
+        cursor: pointer;
+        transition: background .2s ease-in-out, border .2s ease-in-out;
+    }
+
+    .drop-container:hover {
+        background: rgba(0, 140, 255, 0.164);
+        border-color: rgba(17, 17, 17, 0.616);
+    }
+
+    .drop-container:hover .drop-title {
+        color: #222;
+    }
+
+    .drop-title {
+        color: #444;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        transition: color .2s ease-in-out;
+    }
+
+    #file-input {
+        width: 100%;
+        max-width: 100%;
+        color: #444;
+        padding: 2px;
+        background: #fff;
+        border-radius: 10px;
+        border: 1px solid rgba(8, 8, 8, 0.288);
+    }
+
+    #file-input::file-selector-button {
+        margin-right: 20px;
+        border: none;
+        background: #E6873C;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: #fff;
+        cursor: pointer;
+        transition: background .2s ease-in-out;
+    }
+
+    #file-input::file-selector-button:hover {
+        background: #000;
+    }
+
+    .btn:hover {
+        color: #ffffff;
+    }
+
+
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    #recipientInput {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+    }
+
+    .recipient-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .recipient-list li {
+        cursor: pointer;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    .recipient-list li:last-child {
+        border-bottom: none;
+    }
+
+    .recipient-list li:hover {
+        background-color: #f5f5f5;
     }
     </style>
 </head>
 
 <body>
     <div class="container">
+      
+
         <div class="row gutters-sm">
             <div class="col-md-4 d-none d-md-block">
                 <div class="card">
@@ -135,7 +286,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                             </a>
                             <a href="Profile_purchases.php" class="nav-item nav-link has-icon nav-link-faded">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="currentColor" class="feather feather-settings mr-2 ">
+                                    fill="currentColor" class="feather feather-settings mr-2">
                                     <path
                                         d="M17 18a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2M1 2h3.27l.94 2H20a1 1 0 0 1 1 1c0 .17-.05.34-.12.5l-3.58 6.47c-.34.61-1 1.03-1.75 1.03H8.1l-.9 1.63l-.03.12a.25.25 0 0 0 .25.25H19v2H7a2 2 0 0 1-2-2c0-.35.09-.68.24-.96l1.36-2.45L3 4H1V2m6 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2m9-7l2.78-5H6.14l2.36 5H16Z">
                                     </path>
@@ -150,14 +301,14 @@ if ($res = mysqli_fetch_array($findresult)) {
                                 </svg>Messages
                             </a>
 
-                            <a href="Profile_reviews.php" class="nav-item nav-link has-icon nav-link-faded">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="currentColor" class="feather feather-settings mr-2">
-                                        <path
-                                            d="M4 4h16v12H5.17L4 17.17V4m0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h12v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z">
-                                        </path>
-                                    </svg>Reviews
-                                </a>
+                            <a href="Profile_reviews.php" class="nav-item nav-link has-icon nav-link-faded active">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor" class="feather feather-settings mr-2">
+                                    <path
+                                        d="M4 4h16v12H5.17L4 17.17V4m0-2c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4zm2 10h12v2H6v-2zm0-3h12v2H6V9zm0-3h12v2H6V6z">
+                                    </path>
+                                </svg>Reviews
+                            </a>
 
                             <a href="Profile_notifications.php" class="nav-item nav-link has-icon nav-link-faded">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -165,9 +316,10 @@ if ($res = mysqli_fetch_array($findresult)) {
                                     stroke-linejoin="round" class="feather feather-bell mr-2">
                                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                                     <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                                </svg>Notification<span class="badge badge-danger ml-2"><?= mysqli_num_rows($notifications) ?>
+                                </svg>Notification<span
+                                    class="badge badge-danger ml-2"><?= mysqli_num_rows($notifications) ?>
                             </a>
-                            <a href="Profile_changepass.php" class="nav-item nav-link has-icon nav-link-faded active">
+                            <a href="Profile_changepass.php" class="nav-item nav-link has-icon nav-link-faded">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-shield mr-2">
@@ -201,7 +353,7 @@ if ($res = mysqli_fetch_array($findresult)) {
                                     </svg></a>
                             </li>
                             <li class="nav-item">
-                                <a href="Profile_messages.php" class="nav-link has-icon"><svg
+                                <a href="Profile_messages.php" class="nav-link has-icon active"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                         fill="currentColor" stroke-linejoin="round" class="feather feather-bell">
                                         <path
@@ -216,10 +368,11 @@ if ($res = mysqli_fetch_array($findresult)) {
                                         stroke-linejoin="round" class="feather feather-bell">
                                         <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
                                         <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                                    </svg><span class="badge badge-danger ml-1"><?= mysqli_num_rows($notifications) ?></a>
+                                    </svg><span
+                                        class="badge badge-danger ml-1"><?= mysqli_num_rows($notifications) ?></a>
                             </li>
                             <li class="nav-item">
-                                <a href="Profile_changepass.php" class="nav-link has-icon active"><svg
+                                <a href="Profile_changepass.php" class="nav-link has-icon"><svg
                                         xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round" class="feather feather-shield">
@@ -229,107 +382,50 @@ if ($res = mysqli_fetch_array($findresult)) {
                         </ul>
                     </div>
                     <div class="card-body">
-                        <?php if (isset($_GET['error'])) { ?>
-                        <div class="alert alert-warning alert-dismissible fade show center-block bg-danger text-white mb-0"
-                            role="alert" style="height: 60px">
-                            <strong>Error!</strong> <?php echo $_GET['error']; ?>
-                            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close"> <span
-                                    aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <?php } ?>
-                        <?php if (isset($_GET['status'])) { ?>
-                        <div class="alert alert-warning alert-dismissible fade show center-block bg-success bg-gradient text-white mb-0"
-                            role="alert" style="height: 60px">
-                            <strong>Success!</strong> <?php echo $_GET['status']; ?>
-                            <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close"> <span
-                                    aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <?php } ?>
 
-                        <div class="tab-pane" id="security">
-                            <form action="" method="post">
+                        <div class="tab-pane" id="messages">
+                            <div class="container-fluid py-3">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table-wrapper">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h4 class="text-right" style="font-size: 30px;">Product Reviews:</h4>
+                                             
+                                            </div>
 
-                                <?php
-                                if (isset($_POST['change_pass'])) {
+                                            <form action="" method="post">
+                                            <input type="hidden" name="reviewer_name" value="<?php echo $fullname; ?>">
+                                                <div class="form-group">
+                                                    <label for="rating"><b>Rating:</b></label>
 
-                                    $current_password = $_POST['current_password'];
-                                    $new_password = $_POST['new_pass'];
-                                    $confirm_password = $_POST['confirm_pass'];
+                                                    <select  class='form-control' name='rating' style='width:auto;'>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    </select>
 
-
-                                    if ($new_password != $confirm_password) {
-                                        header("location: Profile_changepass.php?error=New password and confirm password do not match");
-                                        exit;
-                                    }
-
-                                    $sql = "SELECT password FROM user_form WHERE id = '$user_id'";
-                                    $result = mysqli_query($conn, $sql);
-
-                                    if (mysqli_num_rows($result) > 0) {
-                                        $row = mysqli_fetch_assoc($result);
-                                        $current_password_hash = $row["password"];
-                                    } else {
-                                        header("location: Profile_changepass.php?error=User not found");
-                                        exit;
-                                    }
-
-                                    if (md5($current_password) != $current_password_hash) {
-                                        header("location: Profile_changepass.php?error=Current password is incorrect");
-                                        exit;
-                                    }
-
-
-                                    $new_password_hash = md5($new_password);
-
-                                    $sql = "UPDATE user_form SET password = '$new_password_hash' WHERE id = '$user_id'";
-
-                                    if (mysqli_query($conn, $sql)) {
-                                        header("location: Profile_changepass.php?status=Your password has been updated");
-                                    } else {
-                                        echo "Error updating password: " . mysqli_error($conn);
-                                    }
-
-                                    mysqli_close($conn);
-                                }
-                                ?>
-                                <div class="p-3">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="text-right" style="font-size: 30px;">Change Password</h4>
-                                    </div>
-                                    <div class="row mt-2 border-top">
-                                        <input type="hidden" name="user_id" value="<?php echo $fetch_cart['id']; ?>">
-
-                                        <div class="mt-3 col-md-8"><label class="labels"
-                                                style="font-size: 17px;">Current
-                                                Password</label>
-                                            <input type="password" class="form-control" name="current_password"
-                                                placeholder="Enter Old Password">
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label><b>Comment:</b></label>
+                                                    <textarea name="comment" rows="4" class="form-control"
+                                                        required></textarea>
+                                                </div>
+                                           
+                                                <div class="form-group">
+                                                <button type="submit" class="btn color-orange-bg" name="submit_review">Submit Review</button>
+                                                <a href="Profile_reviews.php"><button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button></a>
+                                               
+                                                </div>
+                                                </form> 
                                         </div>
-
-                                        <div class="mt-3 col-md-8"><label class="labels" style="font-size: 17px;">New
-                                                Password</label>
-                                            <input type="password" class="form-control" name="new_pass"
-                                                placeholder="Enter New Password">
-                                        </div>
-
-                                        <div class="mt-3 mb-4 col-md-8"><label class="labels"
-                                                style="font-size: 17px;">Confirm
-                                                New Password</label>
-                                            <input type="password" class="form-control" name="confirm_pass"
-                                                placeholder="Confirm New Password">
-                                        </div>
-
                                     </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                    <input type="submit" value="Change Password" name="change_pass"
-                                        class="btn color-orange-bg" style="font-weight: 600;">
-                                    </div>
-
-                                    
                                 </div>
-                            </form>
+                            </div>
+
+
                         </div>
 
                     </div>
@@ -337,7 +433,6 @@ if ($res = mysqli_fetch_array($findresult)) {
             </div>
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js">
@@ -346,9 +441,60 @@ if ($res = mysqli_fetch_array($findresult)) {
     <script>
     $(document).ready(function() {
         $.noConflict();
-        $('#myTable').dataTable();
+        // $('#myTable').dataTable();
     });
     </script>
+
+
+    <script>
+    $(document).ready(function() {
+        // Event handler for input changes
+        $('#recipientInput').on('input', function() {
+            var input = $(this).val().toLowerCase();
+            var recipientList = $('#recipientList');
+            recipientList.empty();
+
+            // Fetch user data from the server using AJAX
+            $.ajax({
+                url: 'get_users.php',
+                method: 'POST',
+                dataType: 'json',
+                data: {
+                    search: input
+                },
+                success: function(users) {
+                    // Update the dynamic list
+                    users.forEach(function(user) {
+                        var listItem = $('<li data-id="' + user.id + '">' + user
+                            .fullname + '</li>');
+                        listItem.on('click', function() {
+                            $('#recipientInput').val(user.fullname);
+                            $('#selectedRecipient').val(user.id);
+                            recipientList
+                        .empty(); // Clear the list after selection
+                        });
+                        recipientList.append(listItem);
+                    });
+                },
+                error: function(error) {
+                    console.error('Error fetching user data:', error);
+                }
+            });
+        });
+
+        // Show/hide dropdown based on focus
+        $('#recipientInput').on('focus', function() {
+            $('.dropdown-content').show();
+        });
+
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.dropdown').length) {
+                $('.dropdown-content').hide();
+            }
+        });
+    });
+    </script>
+
 
     <script>
     $('.order').click(function() {
@@ -385,6 +531,7 @@ if ($res = mysqli_fetch_array($findresult)) {
         $('#orderModal').modal('hide');
     });
     </script>
+
 </body>
 
 </html>
